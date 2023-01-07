@@ -11,12 +11,12 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     address[] enrolled;
     
 
-    uint32 public totalProposal;
+    uint256 public totalProposal;
     uint32 immutable MIN_VOTE_DURATION = 2 minutes;
 
     mapping(uint256 => ProposalStruct) private raisedProposals;
 
-    struct ProposalStruct{
+    struct ProposalStruct {
         uint256 proposalId;
         string  title;
         string  description;
@@ -51,17 +51,18 @@ contract UniDAO is ReentrancyGuard,AccessControl {
         _;
     }
 
-    function enrollVoters(address[] addresses) private { 
-        for(int i=0;i<addresses.length;i++){
+    function enrollVoters(address[] memory addresses) private { 
+        for(uint256 i=0;i<addresses.length;i++){
             enrolled.push(addresses[i]);
         }
     emit Action(address(this),"ADMIN_ROLE","Addresses added successfully");
     }
 
-    function createProposal( string memory _title,string memory _description,uint256 _duration ) private AdminOnly() returns(ProposalStruct memory){
+    function createProposal( string memory _title,string memory _description,uint256 _duration ) external AdminOnly() returns(ProposalStruct memory){
 
-        _proposalId = totalProposal++;
-        ProposalStruct storage proposal = new raisedProposals[_proposalId];
+       uint256 _proposalId = totalProposal++;
+         ProposalStruct storage proposal = raisedProposals[_proposalId];
+
 
         proposal.proposalId = _proposalId;
         proposal.proposer=msg.sender;
