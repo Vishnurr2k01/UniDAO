@@ -15,7 +15,11 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     uint32 immutable MIN_VOTE_DURATION = 2 minutes;
 
     mapping(uint256 => ProposalStruct) private raisedProposals;
+    mapping(address=>uint256[]) private VoterVotes;
+    mapping(uint256 => VotedStruct[]) private VotedOn;
 
+
+    //structs
     struct ProposalStruct {
         uint256 proposalId;
         string  title;
@@ -31,26 +35,26 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     struct VotedStruct{
         address voter;
         uint256 timestamp;
-        bool choosen;
+        uint256 choosen;
         uint256 power;
     }
 
+    //events
    event Action(      
         address indexed initiator,
        bytes32 role,
        string message);
 
    
-
-
-
-
+   //modifiers
 
     modifier AdminOnly(){
         require(hasRole(ADMIN_ROLE,msg.sender),"Unauthorized : only for admin");
         _;
     }
 
+
+    //admin actions 
     function enrollVoters(address[] memory addresses) private { 
         for(uint256 i=0;i<addresses.length;i++){
             enrolled.push(addresses[i]);
@@ -58,11 +62,14 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     emit Action(address(this),"ADMIN_ROLE","Addresses added successfully");
     }
 
+
+    //proposal and related functions
+
+    
     function createProposal( string memory _title,string memory _description,uint256 _duration ) external AdminOnly() returns(ProposalStruct memory){
 
        uint256 _proposalId = totalProposal++;
          ProposalStruct storage proposal = raisedProposals[_proposalId];
-
 
         proposal.proposalId = _proposalId;
         proposal.proposer=msg.sender;
@@ -75,5 +82,25 @@ contract UniDAO is ReentrancyGuard,AccessControl {
         proposal.passed=false;
 
         emit Action(msg.sender,ADMIN_ROLE,"Proposal raised");
+    }
+
+    function performVote(uint256 _proposalId,uint256 choosen,uint256 _power) public {
+        ProposalStruct storage proposal = raisedProposals[_proposalId];
+        handleVoting(proposal);
+
+        if(choosen==1)proposal.upvotes+=_power;
+        else proposal.downvotes+=_power;
+
+        VoterVotes[msg.sender].push(_proposalId);
+        VotedOn[_proposalId].push(
+        msg.sender, block.timestamp, choosen,_power
+        );
+
+
+        emit Action(
+            msg.sender,
+            VOTER_ROLE,
+            "voted"
+        );
     }
 }
