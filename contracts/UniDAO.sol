@@ -8,7 +8,7 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     bytes32 private immutable ADMIN_ROLE = keccak256("ADMIN");
     bytes32 private immutable VOTER_ROLE = keccak256("VOTER");
 
-    address[] enrolled;
+    
     
 
     uint256 public totalProposal;
@@ -18,6 +18,7 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     mapping(address=>uint256[]) private VoterVotes;
     mapping(uint256 => VotedStruct[]) private VotedOn;
 
+    mapping(address=>VoterStruct) private enrolled;
 
     //structs
     struct ProposalStruct {
@@ -39,6 +40,10 @@ contract UniDAO is ReentrancyGuard,AccessControl {
         uint256 power;
     }
 
+    struct VoterStruct{
+        uint256 power;
+    }
+
     //events
    event Action(      
         address indexed initiator,
@@ -55,9 +60,11 @@ contract UniDAO is ReentrancyGuard,AccessControl {
 
 
     //admin actions 
-    function enrollVoters(address[] memory addresses) private { 
+    function enrollVoters(address[] memory addresses,uint256[] memory _power) private { 
         for(uint256 i=0;i<addresses.length;i++){
-            enrolled.push(addresses[i]);
+            VoterStruct storage voter = enrolled[addresses[i]];
+            voter.power = _power[i];
+
         }
     emit Action(address(this),"ADMIN_ROLE","Addresses added successfully");
     }
@@ -86,14 +93,15 @@ contract UniDAO is ReentrancyGuard,AccessControl {
 
     function performVote(uint256 _proposalId,uint256 choosen,uint256 _power) public {
         ProposalStruct storage proposal = raisedProposals[_proposalId];
-        handleVoting(proposal);
+        // handleVoting(proposal);
 
         if(choosen==1)proposal.upvotes+=_power;
         else proposal.downvotes+=_power;
 
         VoterVotes[msg.sender].push(_proposalId);
-        VotedOn[_proposalId].push(
-        msg.sender, block.timestamp, choosen,_power
+
+        VotedOn[proposal.proposalId].push(
+       VotedStruct(payable(msg.sender), block.timestamp, choosen,_power)
         );
 
 
@@ -102,5 +110,19 @@ contract UniDAO is ReentrancyGuard,AccessControl {
             VOTER_ROLE,
             "voted"
         );
+    }
+
+    function handleVoting(ProposalStruct storage proposal)private{
+        if(proposal.passed || proposal.duration<=block.timestamp){
+            proposal.passed=true;
+            revert("Proposal has expired");
+        }
+
+        uint256[] memory tempVotes = VoterVotes[msg.sender];
+        for (uint256 votes = 0; votes < tempVotes.length; votes++) {
+            if (proposal.proposalId == tempVotes[votes]) {
+                revert("You have already voted");
+            }
+        }
     }
 }
