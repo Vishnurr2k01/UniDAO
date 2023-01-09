@@ -42,6 +42,7 @@ contract UniDAO is ReentrancyGuard,AccessControl {
 
     struct VoterStruct{
         uint256 power;
+        
     }
 
     //events
@@ -58,22 +59,39 @@ contract UniDAO is ReentrancyGuard,AccessControl {
         _;
     }
 
+    modifier VoterOnly(){
+  require(hasRole(VOTER_ROLE,msg.sender),"Unauthorized : only for people enrolled in this institution");
+        _;   
+    }
 
     //admin actions 
-    function enrollVoters(address[] memory addresses,uint256[] memory _power) private { 
+    function enrollVoters(address[] memory addresses,uint256[] memory _power) public { 
         for(uint256 i=0;i<addresses.length;i++){
+            if(enrolled[addresses[i]].power>0){
+                continue;
+            }
             VoterStruct storage voter = enrolled[addresses[i]];
             voter.power = _power[i];
-
+            _setupRole(VOTER_ROLE,addresses[i]);
         }
+
     emit Action(address(this),"ADMIN_ROLE","Addresses added successfully");
     }
 
 
+
+// set admin role
+    function setAdminRole(address addr)public{
+        _setupRole(ADMIN_ROLE,addr);
+        _setupRole(VOTER_ROLE,addr);
+    }
+
     //proposal and related functions
 
     
-    function createProposal( string memory _title,string memory _description,uint256 _duration ) external AdminOnly() returns(ProposalStruct memory){
+    function createProposal( string memory _title,string memory _description
+    // ,uint256 _duration
+     ) external AdminOnly() returns(ProposalStruct memory){
 
        uint256 _proposalId = totalProposal++;
          ProposalStruct storage proposal = raisedProposals[_proposalId];
@@ -82,19 +100,19 @@ contract UniDAO is ReentrancyGuard,AccessControl {
         proposal.proposer=msg.sender;
         proposal.title=_title;
         proposal.description=_description;
-        proposal.duration=_duration;
+        proposal.duration=MIN_VOTE_DURATION;
         proposal.reactions=0;
         proposal.downvotes=0;
         proposal.upvotes=0;
-        proposal.passed=false;
+        // proposal.passed=false;
 
         emit Action(msg.sender,ADMIN_ROLE,"Proposal raised");
     }
 
-    function performVote(uint256 _proposalId,uint256 choosen,uint256 _power) public {
+    function performVote(uint256 _proposalId,uint256 choosen) public VoterOnly(){
         ProposalStruct storage proposal = raisedProposals[_proposalId];
-        // handleVoting(proposal);
-
+        handleVoting(proposal);
+        uint256 _power = enrolled[msg.sender].power;
         if(choosen==1)proposal.upvotes+=_power;
         else proposal.downvotes+=_power;
 
