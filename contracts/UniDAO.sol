@@ -12,7 +12,8 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     
 
     uint256 public totalProposal;
-    uint32 immutable MIN_VOTE_DURATION = 2 minutes;
+    uint32 immutable MIN_VOTE_DURATION = 5 minutes;
+    address[] adminAddresses;
 
     mapping(uint256 => ProposalStruct) private raisedProposals;
     mapping(address=>uint256[]) private VoterVotes;
@@ -52,6 +53,12 @@ contract UniDAO is ReentrancyGuard,AccessControl {
        string message);
 
    
+
+   constructor(address[] addr) public{
+       for(uint256 i=0;i<addr.length;i++){
+           adminAddresses.push(addr);
+       }
+   }
    //modifiers
 
     modifier AdminOnly(){
@@ -65,6 +72,11 @@ contract UniDAO is ReentrancyGuard,AccessControl {
     }
 
     //admin actions 
+
+
+
+//                      enroll new voters
+
     function enrollVoters(address[] memory addresses,uint256[] memory _power) public { 
         for(uint256 i=0;i<addresses.length;i++){
             if(enrolled[addresses[i]].power>0){
@@ -80,8 +92,20 @@ contract UniDAO is ReentrancyGuard,AccessControl {
 
 
 
-// set admin role
-    function setAdminRole(address addr)public{
+//                     SET ADMIN ROLE
+
+
+
+//set roles for addressed passed through constructor
+  function setAdminRole()public{
+        for(uint256 i=0;i<adminAddresses.length;i++){
+            _setupRole(ADMIN_ROLE,adminAddresses[i]);
+        _setupRole(VOTER_ROLE,adminAddresses[i]);
+       }
+    }
+
+//add new admin
+    function setnewAdmin(address addr)public{
         _setupRole(ADMIN_ROLE,addr);
         _setupRole(VOTER_ROLE,addr);
     }
@@ -143,4 +167,14 @@ contract UniDAO is ReentrancyGuard,AccessControl {
             }
         }
     }
+
+    function getProposals()public view returns(ProposalStruct[] memory props){
+
+        props = new ProposalStruct[](totalProposal);
+
+        for(uint256 i=0;i<totalProposal;i++){
+            props[i]=raisedProposals[i];
+        }
+    }
+    
 }
