@@ -15,17 +15,17 @@ export default function Navbar() {
   ];
   return (
     <div className="flex">
-      <div className={`${open? 'w-72' : 'w-10'} h-screen bg-zinc-900 p-7 relative `}>
+      <div className={`${open? 'w-72' : 'w-20'} h-screen bg-zinc-900 p-3 relative `}>
         
-          <div className="flex gap-x-8 items-center pb-10 text-white">
-          <i className="fa fa-magnet text-white text-3xl "></i>
-          <h className={`${!open && 'scale-0'}text-white text-2xl`}>UniDAO</h>
-          <i className="fa fa-bars fa-sm text-white absolute right-3 bottom-5" aria-hidden="true" onClick={()=> setOpen(!open)}></i>
+          <div className="flex gap-x-2 items-center pb-7 text-white">
+          <i className="fa fa-magnet text-teal-400 text-xs "></i>
+          <h className={`${!open && 'scale-0'}text-white text-xs`}>UniDAO</h>
+          <i className="fa fa-bars fa-sm text-teal-400 absolute right-3 bottom-5" aria-hidden="true" onClick={()=> setOpen(!open)}></i>
           </div>
           <ul>
             {menu?.map((item,index)=> (
-            <div className="flex gap-x-7 items-center p-1 cursor-pointer hover:bg-slate-50/10 rounded-full text-white">
-            <i className="fa fa-superpowers text-white text-xl" aria-hidden="true"></i>
+            <div className="flex gap-x-7 items-center p-1 cursor-pointer hover:bg-slate-50/10 rounded-full text-teal-300">
+            <i className="fa fa-superpowers text-teal-400 text-xl" aria-hidden="true"></i>
               <li className= {`${!open && 'scale-0'} text-white`}>{item.title}</li>
               </div>
             ))}
