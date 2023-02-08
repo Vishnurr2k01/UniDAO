@@ -16,13 +16,13 @@ contract UniDAO is ReentrancyGuard, AccessControl {
 
     mapping(uint256 => ProposalStruct) private raisedProposals;
     mapping(uint256 => ProposalStruct) private changeAdminProposals;
-    
+
     mapping(address => uint256[]) private VoterVotes;
     mapping(address => uint256[]) private AdminVotes;
     mapping(uint256 => VotedStruct[]) private VotedOn;
     mapping(address => VoterStruct) private enrolled;
 
-    bool inittime = true; 
+    bool inittime = true;
 
     //structs
     struct ProposalStruct {
@@ -85,7 +85,7 @@ contract UniDAO is ReentrancyGuard, AccessControl {
     function enrollVoters(address[] memory addresses, uint256[] memory _power)
         public
     {
-createAdminProposal("Enroll Voters",1000,addresses,true,true);
+        createAdminProposal("Enroll Voters", 1000, addresses, true, true);
 
         for (uint256 i = 0; i < addresses.length; i++) {
             if (enrolled[addresses[i]].power > 0) {
@@ -107,14 +107,13 @@ createAdminProposal("Enroll Voters",1000,addresses,true,true);
 
     //set roles for addressed passed through constructor
     function setAdminRole() public {
-        if(inittime==true){
+        if (inittime == true) {
             for (uint256 i = 0; i < adminAddresses.length; i++) {
-            _setupRole(ADMIN_ROLE, adminAddresses[i]);
-            _setupRole(VOTER_ROLE, adminAddresses[i]);
-        }
-        inittime=false;
-        }else revert("action already performed");
-        
+                _setupRole(ADMIN_ROLE, adminAddresses[i]);
+                _setupRole(VOTER_ROLE, adminAddresses[i]);
+            }
+            inittime = false;
+        } else revert("action already performed");
     }
 
     //add new admin
@@ -145,49 +144,52 @@ createAdminProposal("Enroll Voters",1000,addresses,true,true);
         emit Action(msg.sender, ADMIN_ROLE, "Proposal raised");
     }
 
+    // admin proposal : entrol : true ---> to enroll new address : false ---> delete ::: voter : true ----> enrol or delete a voter : false ---> enrol or delete admin
 
-// admin proposal : entrol : true ---> to enroll new address : false ---> delete ::: voter : true ----> enrol or delete a voter : false ---> enrol or delete admin
-
-    function createAdminProposal (string memory _title,uint256 _duration,address[] memory addresses,bool _enrol , bool _voter) public 
-    AdminOnly returns (ProposalStruct memory){
+    function createAdminProposal(
+        string memory _title,
+        uint256 _duration,
+        address[] memory addresses,
+        bool _enrol,
+        bool _voter
+    ) public AdminOnly returns (ProposalStruct memory) {
         uint256 _admProposals = admProposals++;
-        ProposalStruct storage proposal =  changeAdminProposals[_admProposals];
+        ProposalStruct storage proposal = changeAdminProposals[_admProposals];
 
         proposal.proposalId = _admProposals;
         proposal.proposer = msg.sender;
         proposal.title = _title;
-        proposal.description="admin votes";
-        proposal.duration=block.timestamp + _duration;
+        proposal.description = "admin votes";
+        proposal.duration = block.timestamp + _duration;
         proposal.change = addresses;
-        proposal.enrol=_enrol;
-        proposal.voter=_voter;
+        proposal.enrol = _enrol;
+        proposal.voter = _voter;
         proposal.reactions = 0;
         proposal.downvotes = 0;
         proposal.upvotes = 0;
     }
 
-    function performAdminVote  (uint256 _proposalId, uint256 choosen) AdminOnly public{
+    function performAdminVote(uint256 _proposalId, uint256 choosen)
+        public
+        AdminOnly
+    {
         ProposalStruct storage proposal = changeAdminProposals[_proposalId];
-         handleVoting(proposal,"admin");
+        handleVoting(proposal, "admin");
         proposal.reactions++;
-        if (choosen == 1) proposal.upvotes ++;
-        else proposal.downvotes ++;
+        if (choosen == 1) proposal.upvotes++;
+        else proposal.downvotes++;
 
         AdminVotes[msg.sender].push(_proposalId);
 
         emit Action(msg.sender, ADMIN_ROLE, "voted");
     }
 
-
-
-
-
     function performVote(uint256 _proposalId, uint256 choosen)
         public
         VoterOnly
     {
         ProposalStruct storage proposal = raisedProposals[_proposalId];
-        handleVoting(proposal,"voter");
+        handleVoting(proposal, "voter");
         uint256 _power = enrolled[msg.sender].power;
         proposal.reactions++;
         if (choosen == 1) proposal.upvotes += _power;
@@ -202,28 +204,28 @@ createAdminProposal("Enroll Voters",1000,addresses,true,true);
         emit Action(msg.sender, VOTER_ROLE, "voted");
     }
 
-    function handleVoting(ProposalStruct storage proposal,string memory adm) private {
+    function handleVoting(ProposalStruct storage proposal, string memory adm)
+        private
+    {
         if (proposal.passed || proposal.duration <= block.timestamp) {
             proposal.passed = true;
             revert("Proposal has expired");
         }
-            if(keccak256(abi.encodePacked(adm))==keccak256("admin")){
-
-                uint256[] memory tempVotes = AdminVotes[msg.sender];
-        for (uint256 votes = 0; votes < tempVotes.length; votes++) {
-            if (proposal.proposalId == tempVotes[votes]) {
-                revert("You have already voted");
+        if (keccak256(abi.encodePacked(adm)) == keccak256("admin")) {
+            uint256[] memory tempVotes = AdminVotes[msg.sender];
+            for (uint256 votes = 0; votes < tempVotes.length; votes++) {
+                if (proposal.proposalId == tempVotes[votes]) {
+                    revert("You have already voted");
+                }
+            }
+        } else {
+            uint256[] memory tempVotes = VoterVotes[msg.sender];
+            for (uint256 votes = 0; votes < tempVotes.length; votes++) {
+                if (proposal.proposalId == tempVotes[votes]) {
+                    revert("You have already voted");
+                }
             }
         }
-            }else{
-                        uint256[] memory tempVotes = VoterVotes[msg.sender];
-        for (uint256 votes = 0; votes < tempVotes.length; votes++) {
-            if (proposal.proposalId == tempVotes[votes]) {
-                revert("You have already voted");
-            }
-        }
-            }
-        
     }
 
     function getProposals()
