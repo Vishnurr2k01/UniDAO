@@ -5,11 +5,11 @@ import Hero from '../components/Hero'
 //import {BrowserRouter as Router,Routes,Route} from "react-router-dom" ;
 const Frontpg = () => {
   return (
-    <>
-        <Header />
+    <div >
+
+<Header />
         <Hero />
-        <Footer />
-    </>
+    </div>
 
   )
 }
