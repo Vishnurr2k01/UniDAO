@@ -1,15 +1,15 @@
-import React from 'react'
-
+import React,{useState,useEffect} from 'react'
+import Navbar from "../components/Navbar"
+import HeroA from '../components/adminhero';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function Adminop() {
   return (
-    <Router>
+    <div>
+     <HeroA/>
+     
+</div>
     
-    <Routes>
-
-    </Routes>
-   </Router>
-  )
+  );
 }
 
 export default Adminop
