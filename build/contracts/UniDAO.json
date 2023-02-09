@@ -1,5 +1,6 @@
 {
   "contractName": "UniDAO",
+  "contract-address":"0x085ce9B11C7C9EAb7B5bbCB4E4765E88bC44Ae05",
   "abi": [
     {
       "inputs": [
@@ -123,7 +124,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -136,7 +138,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -155,7 +158,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -197,7 +201,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -252,7 +257,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -265,7 +271,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -623,7 +630,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -714,7 +722,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -727,7 +736,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -37757,9 +37767,17 @@
     "name": "solc",
     "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5": {
+      "events": {},
+      "links": {},
+      "address": "0x085ce9B11C7C9EAb7B5bbCB4E4765E88bC44Ae05",
+      "transactionHash": "0xdbe4d17a7b1cf25dab6e05af35d3bc86e7d5027fe8cb5cc04493d09f909b2a95"
+    }
+  },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2023-02-09T10:04:52.671Z",
+  "updatedAt": "2023-02-09T10:29:15.332Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
