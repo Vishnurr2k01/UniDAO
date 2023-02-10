@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typed from 'react-typed';
-
+import {connectWallet} from '../services/Blockchain.services';
+import { getGlobalState, useGlobalState } from '../store';
 const Hero = () => {
+
+  const [connectedAccount] = useGlobalState('connectedAccount')
+  useEffect(() => {
+    
+  console.log(connectedAccount)
+    
+  }, [connectedAccount])
+  
   return (
     <div className='text-white'>
       <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
@@ -24,7 +33,10 @@ const Hero = () => {
           />
         </div>
         <p className='md:text-2xl text-xl font-bold text-gray-500'>Make decisions from the bottom-up,governed by a community organized around rules enforced on a blockchain.</p>
-        <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black'>Connect Wallet</button>
+        {
+          connectedAccount ? <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black'>{connectedAccount.slice(0,7)}...</button> :
+          <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black' onClick={connectWallet}>Connect Wallet</button>
+        }
       </div>
     </div>
   );
