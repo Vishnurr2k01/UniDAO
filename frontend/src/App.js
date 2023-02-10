@@ -21,7 +21,7 @@ function App() {
   <Router>
     <Routes>
     <Route path='/' element={<Frontpg/>} />
-    <Route path='/Adminop' element={<Adminop/>}/>
+    <Route path='/admin' element={<Adminop/>}/>
     </Routes>
    </Router>  : <div className="flex justify-center items-center h-screen">
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900 dark:border-gray-300"></div>
