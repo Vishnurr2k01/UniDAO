@@ -27,7 +27,7 @@ export default function Navbar() {
           </div>
           <ul>
             {menu?.map((item,index)=> (
-            <div className="flex gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]">
+            <div className=" flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]">
             <i className="text-3xl" aria-hidden="true">{item.icon}</i>
               <li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`}>{item.title}</li>
               </div>

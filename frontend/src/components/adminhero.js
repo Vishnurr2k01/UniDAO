@@ -6,7 +6,11 @@ const HeroA = () => {
   return (
     <div className="main">
         
-    <div className='w-full h-[90vh] top-[90px]'>
+    <div style={{
+      backgroundImage: `url(${heroVid})`,
+      overflowY: 'scroll',
+      overflowX: 'hidden',
+    }} className='w-full h-screen top-[90px] flex'>
       <video
         className='object-cover h-full w-full absolute -z-10 blur-sm'
         src={heroVid}
@@ -15,10 +19,10 @@ const HeroA = () => {
         muted
       />
       <div>
-      <nav>
+      <nav className='fixed'>
     <Navbar />
     </nav>
-      <div className='w-full h-[90%] flex flex-col justify-center items-center text-white px-4 text-center'>
+      <div className='w-screen pl-20 text-white '>
         <h1>Decentralized</h1>
         <h1 className='py-2'>
           <span className='blue'>Decision</span> Making
@@ -29,9 +33,7 @@ const HeroA = () => {
         </p>
 
       </div>
-      <div>
-        <p className='text-center text-white text-2xl font-bold'>UniDAO</p>
-      </div>
+     
     </div>
     </div>
     </div>
