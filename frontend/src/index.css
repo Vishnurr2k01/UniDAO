@@ -6,3 +6,16 @@
 body{
   background-color: #000300;
 }
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00df9a;
+}
+
+/* Handle on hover */

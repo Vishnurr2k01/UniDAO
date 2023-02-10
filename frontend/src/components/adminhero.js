@@ -22,7 +22,7 @@ const HeroA = () => {
       <nav className='fixed'>
     <Navbar />
     </nav>
-      <div className='w-screen pl-20 text-white '>
+      <div className='w-screen  pl-20 text-white '>
         <h1>Decentralized</h1>
         <h1 className='py-2'>
           <span className='blue'>Decision</span> Making
