@@ -1,18 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Frontpg from "./pages/Frontpg";
 import Adminop from "./pages/Adminop";
-import {isWalletConnected,connectWallet} from './services/Blockchain.services'
+import {isWalletConnected} from './services/Blockchain.services'
 import { useEffect } from "react";
 import { useState } from "react";
+import { useGlobalState } from "./store";
 function App() {
 
   const [loaded,setLoaded] = useState(false)
 
+
   useEffect(()=>{
     const fn = async () => {
       isWalletConnected()
+     
       setLoaded(true)
     }
+    
   fn()
   },[])
   return (
