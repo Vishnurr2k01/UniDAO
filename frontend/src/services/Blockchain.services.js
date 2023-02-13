@@ -89,7 +89,7 @@ const createProposal = async({title,description,duration})=>{
 const createAdminProposal = async ({title,addresses,power,enrol,voter})=>{
         try {
             const contract = await getEthereumContract();
-            const account = useGlobalState('connectedAccount');
+            const account = getGlobalState('connectedAccount');
 
             await contract.methods.createAdminProposal(title,addresses,power,enrol,voter).send({from:account})
         } catch (error) {
