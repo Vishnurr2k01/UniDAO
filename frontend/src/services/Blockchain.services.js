@@ -96,5 +96,60 @@ const createAdminProposal = async ({title,addresses,power,enrol,voter})=>{
             console.log(JSON.stringify(error))
         }
 }
+const getProposals = async () => {
+    try {
+      if (!ethereum) return alert('Please install Metamask')
+  
+      const contract = await getEthereumContract()
+      const proposals = await contract.methods.getProposals().call()
+      console.log(proposals);
+      setGlobalState('proposals', structuredProposals(proposals))
+      console.log(structuredProposals(proposals));
+      console.log(getGlobalState('proposals'));
+      
+    } catch (error) {
+      reportError(error)
+    }
+  }
+  
+  const structuredProposals = (proposals) => {
+    return proposals
+      .map((proposal) => ({
+        id: proposal.id,
+        title: proposal.title,
+        description: proposal.description,
+        passed: proposal.passed,
+        proposer: proposal.proposer,
+        upvotes: Number(proposal.upvotes),
+        downvotes: Number(proposal.downvotes),
+        duration: proposal.duration,
+        enrol: proposal.enrol,
+        addresses:proposal.change,
+        power:proposal.power,
+        voter:proposal.voter,
+        action:proposal.action,
+        reactions:proposal.reactions
 
-export {connectWallet,isWalletConnected,getEthereumContract,setAdminRole,createProposal,createAdminProposal}
+      }))
+      .reverse()
+  }
+  
+  const getProposal = async (id) => {
+    try {
+      const proposals = getGlobalState('proposals')
+      return proposals.find((proposal) => proposal.id === id)
+    } catch (error) {
+      reportError(error)
+    }
+  }
+  const isVoter = async ()=>{
+    try {
+        const contract = getEthereumContract()
+       const voter = await contract.methods.isVoter().call({from:getGlobalState('connectedAccount')})
+       console.log(voter,'here')
+       setGlobalState('isVoter',voter)
+    } catch (error) {
+        console.log(error);
+    }
+  }
+export {connectWallet,isWalletConnected,getEthereumContract,setAdminRole,createProposal,createAdminProposal,getProposal,getProposals,isVoter}

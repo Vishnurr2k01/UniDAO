@@ -229,8 +229,12 @@ contract UniDAO is ReentrancyGuard, AccessControl {
     }
 
     function isVoter() public view returns (bool) {
-        return enrolled[msg.sender].power > 0;
+        return hasRole(VOTER_ROLE,msg.sender);
     }
+     function isAdmin() public view returns (bool) {
+        return hasRole(ADMIN_ROLE,msg.sender);
+    }
+
 
     function getAdminProposals()
         public

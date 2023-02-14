@@ -1,23 +1,27 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Frontpg from "./pages/Frontpg";
 import Adminop from "./pages/Adminop";
-import {isWalletConnected} from './services/Blockchain.services'
+import {isWalletConnected,setAdminRole,isVoter} from './services/Blockchain.services'
 import { useEffect } from "react";
 import { useState } from "react";
-import { useGlobalState } from "./store";
+import { useGlobalState,getGlobalState } from "./store";
 function App() {
 
   const [loaded,setLoaded] = useState(false)
+ 
 
 
   useEffect(()=>{
     const fn = async () => {
-      isWalletConnected()
-     
+      await isWalletConnected()
+      // await setAdminRole() need call once
+      await isVoter()
+     console.log(getGlobalState('isVoter'))
       setLoaded(true)
     }
     
   fn()
+
   },[])
   return (
     <div>
