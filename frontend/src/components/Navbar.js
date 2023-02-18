@@ -21,7 +21,7 @@ export default function Navbar() {
     { title: 'Create Admin Proposal',icon:<RiAdminFill/>} 
     
   ];*/}
-  
+
   return (
     <div className="flex">
       <div className={`${open? 'w-72' : 'w-20'} h-screen bg-zinc-900 p-3 relative `}>
