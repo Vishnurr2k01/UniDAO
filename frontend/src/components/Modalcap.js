@@ -1,11 +1,21 @@
-//add proposal modal
+//create admin proposal modal
+
 import React, { useState } from "react";
 
-const Modal = () => {
+const Modalcap = () => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      
+{/*     
+          <button
+        className="bg-blue-200 text-black active:bg-blue-500 
+      font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+        type="button"
+        onClick={() => setShowModal(true)}
+      >
+        Fill Details
+      </button> */}
+    
       {showModal ? (
         <>
         
@@ -13,7 +23,7 @@ const Modal = () => {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#00df9a] outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-[#00df9a] rounded-t ">
-                  <h1 className="text-xl font=bold">Add Proposal</h1>
+                  <h1 className="text-xl font=bold">Create Admin</h1>
                   <button
                     className="bg-transparent border-0 text-black float-right"
                     onClick={() => setShowModal(false)}
@@ -30,11 +40,11 @@ const Modal = () => {
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
                     <label className="block text-white text-sm font-semibold mb-1">
-                      Description
+                      Address
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
                     <label className="block text-white text-sm font-semibold mb-1">
-                      Duration
+                      Power
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
                     
@@ -65,4 +75,5 @@ const Modal = () => {
     </>
   );
 };
-export default Modal;
+
+export default Modalcap;
