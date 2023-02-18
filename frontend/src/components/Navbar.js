@@ -1,5 +1,7 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState} from 'react';
+import { useEffect } from 'react';
+import Modal from './modala';
 import {AiFillAccountBook} from 'react-icons/ai'
 import {MdPoll} from 'react-icons/md'
 import {IoPersonAdd} from 'react-icons/io5'
