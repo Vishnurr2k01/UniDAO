@@ -1,18 +1,19 @@
 import React from 'react';
 
 import heroVid from '../assets/video.mp4';
+import blc from '../assets/blc.jpg';
 import Navbar from './Navbar';
 const HeroA = () => {
   return (
     <div className="main">
         
     <div style={{
-      backgroundImage: `url(${heroVid})`,
+      backgroundImage:`url(${heroVid})`,
       overflowY: 'scroll',
       overflowX: 'hidden',
     }} className='w-full h-screen top-[90px] flex'>
       <video
-        className='object-cover h-full w-full absolute -z-10 blur-sm'
+        className='object-cover h-full w-full absolute -z-10 blur'
         src={heroVid}
         autoPlay
         loop
@@ -22,14 +23,14 @@ const HeroA = () => {
       <nav className='fixed'>
     <Navbar />
     </nav>
-      <div className='w-screen  pl-20 text-white '>
-        <h1>Decentralized</h1>
-        <h1 className='py-2'>
-          <span className='blue'>Decision</span> Making
+      <div className='w-screen  pl-60  text-[#00df9a] '>
+       
+        <h1 className='py-20 pl-60 text-xl font-extrabold'>
+          {/*<span className='blue'>Decentralized Decision</span> Making*/}
         </h1>
-        <p className='text-xl py-4'>
+        <p className='text-2xl py-80 pl-80 italic animate-pulse delay-500'>
           
-           The power to add proposals and add decision makers vests in you!
+           "The power to add proposals and add decision makers vests in you!""
         </p>
 
       </div>
