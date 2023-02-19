@@ -220,5 +220,6 @@ export {
   isVoter,
   isAdmin,
   getAdminProposal,
-  getAdminProposals
+  getAdminProposals,
+  performAction
 };
