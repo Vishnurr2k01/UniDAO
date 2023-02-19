@@ -29,7 +29,7 @@ export default function Navbar() {
           <div className="flex gap-x-2 items-center pb-7 text-white">
           <i className="fa fa-magnet text-[#00df9a] text-xs "></i>
           <h className={`${!open && 'scale-0'}text-[#00df9a] text-xs`}>UniDAO</h>
-          <i className="fa fa-bars fa-sm text-[#00df9a] absolute right-3 bottom-5 text-3xl cursor-pointer transition-[1s]" aria-hidden="true" onClick={()=> setOpen(!open)}></i>
+          <i className="fa fa-bars fa-sm text-[#00df9a] absolute right-5 bottom-10 text-3xl cursor-pointer transition-[1s]" aria-hidden="true" onClick={()=> setOpen(!open)}></i>
           </div>
           
           <ul>
