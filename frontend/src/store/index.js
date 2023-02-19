@@ -6,6 +6,7 @@ const {setGlobalState,useGlobalState,getGlobalState} = createGlobalState({
   proposals : [],
   isAdmin :false,
   isVoter : false,
+  adminProposals : []
 })
 
 export {setGlobalState,useGlobalState,getGlobalState}
