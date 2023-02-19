@@ -11,6 +11,7 @@ contract UniDAO is ReentrancyGuard, AccessControl {
     uint256 public totalProposal;
     uint256 public admProposals;
     uint32 immutable MIN_VOTE_DURATION = 5 minutes;
+    uint256 immutable ADMIN_POWER = 30;
 
     address[] adminAddresses;
 
@@ -229,7 +230,11 @@ contract UniDAO is ReentrancyGuard, AccessControl {
     }
 
     function isVoter() public view returns (bool) {
-        return enrolled[msg.sender].power > 0;
+        return hasRole(VOTER_ROLE, msg.sender);
+    }
+
+    function isAdmin() public view returns (bool) {
+        return hasRole(ADMIN_ROLE, msg.sender);
     }
 
     function getAdminProposals()
@@ -267,7 +272,15 @@ contract UniDAO is ReentrancyGuard, AccessControl {
             if (proposal.enrol) {
                 for (uint256 i = 0; i < proposal.change.length; i++) {
                     _setupRole(ADMIN_ROLE, proposal.change[i]);
-                    _setupRole(VOTER_ROLE, proposal.change[i]);
+                    address[] memory addresses = proposal.change;
+                    for (uint256 i = 0; i < addresses.length; i++) {
+                        if (enrolled[addresses[i]].power > 0) {
+                            continue;
+                        }
+                        VoterStruct storage voter = enrolled[addresses[i]];
+                        voter.power = ADMIN_POWER;
+                        _setupRole(VOTER_ROLE, addresses[i]);
+                    }
                 }
             } else revert("Coming soon");
         }
