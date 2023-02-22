@@ -40,7 +40,9 @@ const el = useRef(null)
           <p className='md:text-5xl sm:text-4xl text-xl font-semibold py-4'>
             UniDAO for
           </p>
+
        <span className='md:text-5xl sm:text-4xl text-xl font-semibold md:pl-4 pl-2' ref={el}></span>
+
         </div>
         <p className='md:text-2xl text-xl font-bold text-gray-500'>Make decisions from the bottom-up,governed by a community organized around rules enforced on a blockchain.</p>
         {
