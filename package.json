@@ -7,9 +7,9 @@
     "@openzeppelin/contracts": "^4.8.0",
     "@truffle/hdwallet-provider": "^2.1.6",
     "dotenv": "^16.0.3",
-    "react-typed": "^1.2.0",
     "truffle": "^5.7.5",
     "truffle-hdwallet-provider": "^1.0.17",
+    "typed.js": "^2.0.12",
     "web3": "^1.8.2"
   }
 }
