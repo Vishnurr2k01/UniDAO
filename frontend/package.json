@@ -15,10 +15,10 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.0",
     "react-scripts": "^5.0.1",
-    "react-typed": "^1.2.0",
     "recharts": "^2.4.1",
     "web-vitals": "^2.1.4",
-    "web3": "^1.8.2"
+    "web3": "^1.8.2",
+    "typed.js": "^2.0.12"
   },
   "scripts": {
     "start": "react-scripts start",
