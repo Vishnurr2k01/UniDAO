@@ -2,7 +2,7 @@ import React from 'react'
 
 function Notfound() {
   return (
-    <div>
+    <div className='text-white'>
         <div className='text-3xl text-center font-bold mt-24'>
         
         OOPS! &nbsp; You doesnot have the permission to access this page.
