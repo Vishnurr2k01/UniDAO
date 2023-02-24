@@ -4,7 +4,7 @@ const {setGlobalState,useGlobalState,getGlobalState} = createGlobalState({
   connectedAccount :'',
   contract : null,
   proposals : [],
-  isAdmin :false,
+  isAdmin :true,
   isVoter : true,
   adminProposals : []
 })
