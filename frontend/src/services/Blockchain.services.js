@@ -175,11 +175,11 @@ const getProposal = async (id) => {
 };
 const isVoter = async () => {
   try {
-    const contract = getEthereumContract();
+    const contract =await getEthereumContract();
     const voter = await contract.methods
       .isVoter()
       .call({ from: getGlobalState("connectedAccount") });
-    console.log(voter, "here");
+
     setGlobalState("isVoter", voter);
   } catch (error) {
     console.log(error);
@@ -187,11 +187,10 @@ const isVoter = async () => {
 };
 const isAdmin = async () => {
   try {
-    const contract = getEthereumContract();
+    const contract = await getEthereumContract();
     const admin = await contract.methods
       .isAdmin()
       .call({ from: getGlobalState("connectedAccount") });
-    console.log(admin, "here");
     setGlobalState("isAdmin", admin);
   } catch (error) {
     console.log(error);
@@ -200,7 +199,7 @@ const isAdmin = async () => {
 
 const performAction = async (id) => {
   try {
-    const contract = getEthereumContract();
+    const contract = await getEthereumContract();
     await contract.methods
       .performAction(id)
       .send({ from: getGlobalState("connecteAccount") });

@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from '../components/Dashboard';
 function Adminop() {
   return (
-    <div >
-     <div className='absolute z-50 overflow-hidden' >
+    <div  className=' overflow-hidden'>
+     <div className='fixed z-50' >
    <Navbar/>
    </div>
    <Dashboard />
