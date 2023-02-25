@@ -11,6 +11,8 @@ import {IoPersonAdd} from 'react-icons/io5'
 import {IoIosCreate} from 'react-icons/io'
 import {RiAdminFill} from 'react-icons/ri'
 import { useNavigate } from "react-router-dom";
+import Viewp from '../pages/viewproposal';
+import {Link} from "react-router-dom";
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -57,7 +59,7 @@ export default function Navbar() {
               </div>
               <div className="flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]"> 
           <div> <i className="text-3xl" aria-hidden="true">{<MdPoll/>}</i></div>
-             <div> <li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`}onClick={() => setShowModalchart(true)}>{'View Proposals'}</li></div>
+             <div> <li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`} ><Link to="/view">{'View Proposals'}</Link></li></div>
               </div>
               
              < div className="flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]"> 
