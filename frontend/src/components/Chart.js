@@ -26,8 +26,8 @@ const data = [
         setProposal(res)
         setData([{
           name: 'Voters',
-          Acceptees: 4000,
-          Rejectees: 2000,
+          Acceptees: res?.upvotes,
+          Rejectees: res?.downvotes,
         }])
       })
     }
