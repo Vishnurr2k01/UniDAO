@@ -20,9 +20,9 @@ const Modalcap = ({isVisible , onClose}) => {
       {/* {showModal ? ( */}
         <>
         
-          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur">
+          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-md">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-[#0c1427] outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-gray-700 outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-[#096246] rounded-t ">
                   <h1 className="text-3xl font=bold text-white">Create Admin</h1>
                   <button
@@ -35,7 +35,7 @@ const Modalcap = ({isVisible , onClose}) => {
                   </button>
                 </div>
                 <div className="relative p-6 ">
-                  <form className="bg-black shadow-md rounded px-20 pt-5 pb-5 w-[600px]">
+                  <form className="bg-gray-600 shadow-md rounded px-20 pt-5 pb-5 w-[600px]">
                     <label className="block text-white text-xl font-semibold mb-1">
                       Title
                     </label>
