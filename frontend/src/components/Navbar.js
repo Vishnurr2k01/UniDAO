@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState , Fragment} from 'react';
 import { useEffect } from 'react';
-import Modal from './modala';
-import Modalau from './Modalau';
-import Modalcap from './Modalcap';
+import Modal from './Modals/modala';
+import Modalau from './Modals/Modalau';
+import Modalcap from './Modals/Modalcap';
 import {AiFillAccountBook} from 'react-icons/ai'
 import {MdPoll} from 'react-icons/md'
 import {IoPersonAdd} from 'react-icons/io5'
@@ -57,10 +57,7 @@ export default function Navbar() {
           <div> <i className="text-3xl" aria-hidden="true">{<MdPoll/>}</i></div>
              <div> <li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`}>{'View Proposals'}</li></div>
               </div>
-              <div className="flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]"> 
-           <div><i className="text-3xl" aria-hidden="true">{<IoPersonAdd/>}</i></div>
-              <div><li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`} onClick={() => setShowModalau(true)}>{'Add User'}</li></div>
-              </div>
+              
              < div className="flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]"> 
            <div><i className="text-3xl" aria-hidden="true">{<RiAdminFill/>}</i></div>
              <div> <li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`} onClick={() => setShowModalcap(true)}>{'Create Admin Proposal'}</li></div>
