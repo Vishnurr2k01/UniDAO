@@ -12,7 +12,7 @@ export default class Example extends PureComponent {
     render() {
       return (
        <div className=' w-fit  rounded-md flex flex-col justify-center'> 
-         <PieChart width={300} height={350} onMouseEnter={this.onPieEnter}>
+         <PieChart width={250} height={350} onMouseEnter={this.onPieEnter}>
           <Pie
             data={data}
             cx={120}
