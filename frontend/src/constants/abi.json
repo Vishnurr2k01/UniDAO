@@ -1,6 +1,6 @@
 {
   "contractName": "UniDAO",
-  "contract-address":"0x085ce9B11C7C9EAb7B5bbCB4E4765E88bC44Ae05",
+  "contract-address":"0x349ff7276a22d79f0b6384265fdad007da539e2a",
   "abi": [
     {
       "inputs": [
@@ -39,373 +39,11 @@
       "type": "event"
     },
     {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "indexed": true,
-          "internalType": "bytes32",
-          "name": "previousAdminRole",
-          "type": "bytes32"
-        },
-        {
-          "indexed": true,
-          "internalType": "bytes32",
-          "name": "newAdminRole",
-          "type": "bytes32"
-        }
-      ],
-      "name": "RoleAdminChanged",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "sender",
-          "type": "address"
-        }
-      ],
-      "name": "RoleGranted",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "sender",
-          "type": "address"
-        }
-      ],
-      "name": "RoleRevoked",
-      "type": "event"
-    },
-    {
-      "inputs": [],
-      "name": "DEFAULT_ADMIN_ROLE",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [],
-      "name": "admProposals",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        }
-      ],
-      "name": "getRoleAdmin",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "grantRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "hasRole",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "renounceRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "role",
-          "type": "bytes32"
-        },
-        {
-          "internalType": "address",
-          "name": "account",
-          "type": "address"
-        }
-      ],
-      "name": "revokeRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes4",
-          "name": "interfaceId",
-          "type": "bytes4"
-        }
-      ],
-      "name": "supportsInterface",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [],
-      "name": "totalProposal",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [],
-      "name": "setAdminRole",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "addr",
-          "type": "address"
-        }
-      ],
-      "name": "setnewAdmin",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "string",
           "name": "_title",
           "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_description",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_duration",
-          "type": "uint256"
-        }
-      ],
-      "name": "createProposal",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "uint256",
-              "name": "proposalId",
-              "type": "uint256"
-            },
-            {
-              "internalType": "string",
-              "name": "title",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "description",
-              "type": "string"
-            },
-            {
-              "internalType": "uint256",
-              "name": "reactions",
-              "type": "uint256"
-            },
-            {
-              "internalType": "address",
-              "name": "proposer",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256",
-              "name": "duration",
-              "type": "uint256"
-            },
-            {
-              "internalType": "bool",
-              "name": "passed",
-              "type": "bool"
-            },
-            {
-              "internalType": "uint256",
-              "name": "upvotes",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "downvotes",
-              "type": "uint256"
-            },
-            {
-              "internalType": "bool",
-              "name": "enrol",
-              "type": "bool"
-            },
-            {
-              "internalType": "address[]",
-              "name": "change",
-              "type": "address[]"
-            },
-            {
-              "internalType": "uint256[]",
-              "name": "power",
-              "type": "uint256[]"
-            },
-            {
-              "internalType": "bool",
-              "name": "voter",
-              "type": "bool"
-            },
-            {
-              "internalType": "bool",
-              "name": "action",
-              "type": "bool"
-            }
-          ],
-          "internalType": "struct UniDAO.ProposalStruct",
-          "name": "",
-          "type": "tuple"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_title",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_duration",
-          "type": "uint256"
         },
         {
           "internalType": "address[]",
@@ -514,6 +152,156 @@
     {
       "inputs": [
         {
+          "internalType": "string",
+          "name": "_title",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_duration",
+          "type": "uint256"
+        }
+      ],
+      "name": "createProposal",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reactions",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "proposer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "duration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "passed",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "upvotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "downvotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "enrol",
+              "type": "bool"
+            },
+            {
+              "internalType": "address[]",
+              "name": "change",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "power",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "voter",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "action",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniDAO.ProposalStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "addresses",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_power",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "enrollVoters",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_proposalId",
+          "type": "uint256"
+        }
+      ],
+      "name": "performAction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "uint256",
           "name": "_proposalId",
           "type": "uint256"
@@ -548,8 +336,236 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+    },
+    {
       "inputs": [],
-      "name": "getProposals",
+      "name": "admProposals",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_proposalId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAdminProposal",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reactions",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "proposer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "duration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "passed",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "upvotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "downvotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "enrol",
+              "type": "bool"
+            },
+            {
+              "internalType": "address[]",
+              "name": "change",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "power",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "voter",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "action",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniDAO.ProposalStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAdminProposals",
       "outputs": [
         {
           "components": [
@@ -630,8 +646,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -722,8 +737,148 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getProposals",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "proposalId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "reactions",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "proposer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "duration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "passed",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "upvotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "downvotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "enrol",
+              "type": "bool"
+            },
+            {
+              "internalType": "address[]",
+              "name": "change",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "power",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "voter",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "action",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniDAO.ProposalStruct[]",
+          "name": "props",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isAdmin",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "inputs": [],
@@ -736,38 +891,38 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_proposalId",
-          "type": "uint256"
-        }
-      ],
-      "name": "performAction",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "inputs": [
         {
-          "internalType": "address[]",
-          "name": "addresses",
-          "type": "address[]"
-        },
-        {
-          "internalType": "uint256[]",
-          "name": "_power",
-          "type": "uint256[]"
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
         }
       ],
-      "name": "enrollVoters",
-      "outputs": [],
-      "stateMutability": "nonpayable",
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalProposal",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     }
   ],
@@ -37771,8 +37926,8 @@
     "5": {
       "events": {},
       "links": {},
-      "address": "0x085ce9B11C7C9EAb7B5bbCB4E4765E88bC44Ae05",
-      "transactionHash": "0xdbe4d17a7b1cf25dab6e05af35d3bc86e7d5027fe8cb5cc04493d09f909b2a95"
+      "address": "0x349ff7276a22d79f0b6384265fdad007da539e2a",
+      "transactionHash": "0x6f2aad453cb34c693688ab7723e272e36f56b11a7f49a8c801180a1901a76599"
     }
   },
   "schemaVersion": "3.4.11",
@@ -37808,3 +37963,4 @@
     "version": 1
   }
 }
+

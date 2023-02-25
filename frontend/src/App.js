@@ -22,8 +22,7 @@ function App() {
   useEffect(()=>{
     const fn = async () => {
       await isWalletConnected()
-      // await setAdminRole() need call once
-      await isVoter()
+      // await setAdminRole() 
       setLoaded(true)
     }
     
