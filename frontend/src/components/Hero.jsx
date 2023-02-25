@@ -1,15 +1,33 @@
-import React, { useEffect } from 'react';
-import Typed from 'react-typed';
+import React, { useEffect,useRef } from 'react';
+import Typed from 'typed.js'
 import {connectWallet} from '../services/Blockchain.services';
 import { getGlobalState, useGlobalState } from '../store';
 const Hero = () => {
-
+const el = useRef(null)
   const [connectedAccount] = useGlobalState('connectedAccount')
   useEffect(() => {
     
-  console.log(connectedAccount)
+  const typed = new Typed(el.current, {
+    strings: ['Transparency', 'Global Access', 'Future'],
+    startDelay: 100,
+    typeSpeed:120,
+     backSpeed:140,
+
+    smartBackspace: true,
+    loop: true,
+      showCursor: true,
     
-  }, [connectedAccount])
+  });
+
+  // Destropying
+  return () => {
+    typed.destroy();
+  };
+    
+  }, [])
+  useEffect(()=>{
+    
+  },[connectedAccount])
   
   return (
     <div className='text-white'>
@@ -24,13 +42,9 @@ const Hero = () => {
           <p className='md:text-5xl sm:text-4xl text-xl font-semibold py-4'>
             UniDAO for
           </p>
-          <Typed
-          className='md:text-5xl sm:text-4xl text-xl font-semibold md:pl-4 pl-2'
-            strings={['Transparency', 'Global Access', 'Future']}
-            typeSpeed={120}
-            backSpeed={140}
-            loop
-          />
+
+       <span className='md:text-5xl sm:text-4xl text-xl font-semibold md:pl-4 pl-2' ref={el}></span>
+
         </div>
         <p className='md:text-2xl text-xl font-bold text-gray-500'>Make decisions from the bottom-up,governed by a community organized around rules enforced on a blockchain.</p>
         {
