@@ -7,7 +7,6 @@ const el = useRef(null)
   const [connectedAccount] = useGlobalState('connectedAccount')
   useEffect(() => {
     
-  console.log(connectedAccount)
   const typed = new Typed(el.current, {
     strings: ['Transparency', 'Global Access', 'Future'],
     startDelay: 100,
@@ -25,7 +24,10 @@ const el = useRef(null)
     typed.destroy();
   };
     
-  }, [connectedAccount])
+  }, [])
+  useEffect(()=>{
+    
+  },[connectedAccount])
   
   return (
     <div className='text-white'>
