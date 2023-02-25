@@ -9,6 +9,7 @@ import User from "./pages/User";
 import Protected from "./services/Protected";
 import Notfound from './pages/Notfound'
 import Chart from "./components/Chart";
+import Usernew from "./pages/Usernew";
 
 function App() {
 
@@ -40,6 +41,7 @@ const [connecteAccount] = getGlobalState('connectedAccount')
     <Route path='/user' element={<Protected isRole={isvoter}><User /></Protected>}/>
      <Route path='/wrong' element={<Notfound/>} />
     <Route path='*' element={<div>404</div>} />
+    <Route path='/usernew' element={<Usernew/>} />
    
 
     </Routes>
