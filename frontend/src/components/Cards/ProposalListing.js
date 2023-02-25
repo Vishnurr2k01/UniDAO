@@ -1,6 +1,9 @@
 import React from 'react'
+import Modalvote from '../Modals/Modalvote';
+import { useState } from 'react';
 
 function ProposalListing() {
+  const [showModalvote, setShowModalvote] = useState(false);
   return (
     <div className='text-white bg-[#0c1427] rounded-md grid grid-cols-6 text-center p-4 py-8 text-lg mt-6'>
         <div className=' col-span-1'> 1 </div>

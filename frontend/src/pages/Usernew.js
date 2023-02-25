@@ -11,7 +11,7 @@ function Usernew() {
     <div>
       <div style={{
       overflowY: 'scroll',
-    }} className="main pl-24 pt-12 min-h-screen overflow-y-scroll">
+    }} className="main pl-20 pt-12 min-h-screen overflow-y-scroll">
    <div className='flex justify-evenly'>
     <div className='bg-black text-center py-6  rounded-md w-[15rem]'>
     <h1 className='text-2xl font-bold text-white'>Organisation name</h1>
@@ -31,7 +31,14 @@ function Usernew() {
     Connect Wallet</div>}</h1>
     </div>
     </div>
-    <div>
+    <div className="">
+    <div className='text-white bg-[#0c1427] rounded-md grid grid-cols-6 text-center py-1 text-xl font-semibold '>
+        <div className=' col-span-1'> Id </div>
+        <div className=' col-span-1'> Initiator </div>
+        <div className=' col-span-3'> Title </div>
+        <div className=' col-span-1'> Action </div>
+        
+    </div>
     <PastProposal/>
       <PastProposal/>
       <ProposalListing/>
