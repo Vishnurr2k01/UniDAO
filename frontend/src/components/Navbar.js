@@ -23,8 +23,10 @@ export default function Navbar() {
   ];*/}
 
   return (
-    <div className="flex">
-      <div className={`${open? 'w-72' : 'w-20'} h-screen bg-zinc-900 p-3 relative `}>
+    <div style={{
+      zIndex: 1000,
+    }} className="flex ">
+      <div className={`${open? 'w-72' : 'w-20'} h-screen bg-zinc-900 p-3 relative z-50 `}>
         
           <div className="flex gap-x-2 items-center pb-7 text-white">
           <i className="fa fa-magnet text-[#00df9a] text-xs "></i>
