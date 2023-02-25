@@ -8,10 +8,8 @@ import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'rec
 
 // Sample data
 const data = [
-{name: 'voters', Acceptees: 400, Rejectees: 800, amt:400},
-{name: 'voters', Acceptees: 700, Rejectees:300, amt:700},
-{name: 'voters', Acceptees: 200, Rejectees:500, amt:1000},
-{name: 'voters', Acceptees: 1000, Rejectees:400, amt:800}
+{name: 'voters', Acceptees: 700, Rejectees: 800},
+
 ];
  
   
@@ -41,11 +39,11 @@ const Chart= () => {
   
 return (
   <div>
-<BarChart width={600} height={500} data={data}
+<BarChart width={300} height={500} data={data}
 margin={{
-  top: 5,
-  right: 30,
-  left: 20,
+  top: 20,
+  right: 50,
+  left: 50,
   bottom: 5
 }}>
   <CartesianGrid strokeDasharray="3 3"/>
