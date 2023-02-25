@@ -63,24 +63,33 @@ const Modalchart = ({isVisible , onClose}) => {
                     </span>
                   </button>
                 </div>
-                {/*<div className="relative p-10 flex-auto">
-                  <form className="bg-black shadow-md rounded px-8 pt-20 pb-20 w-full">
-                    <label className="block text-white text-xl font-semibold mb-3">
-                      Address
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 mb-6 text-black" />
-                    <label className="block text-white text-xl font-semibold mb-3">
-                      Power
-                    </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-5 mb-6 text-black" />
+                <div>
+                <div className=" p-2 flex-auto absolute right-10"> 
+                  {/* <form className="bg-black shadow-md rounded px-8 pt-20 pb-20 w-full"> */}
+                
+                    
+                    <div className="p-10 block text-white text-4xl font-bold pl-20 mb-10 absolute right-20">
+                      Title
+                      </div>
+                    
+              
+                    {/* </div> */}
+                    {/* <input className="shadow appearance-none border rounded w-full py-2 px-1 mb-6 text-black" /> */}
+                    <div class="flex-auto relative ">
+                    <p className="flex-auto overflow-y-auto relative p-40 text-white text-lg font-semibold mt-20 pt-20 absolute left-48">
+                    Lorem ipsum dolor sit , consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    </div>
+                  
+                    {/* <input className="shadow appearance-none border rounded w-full py-2 px-5 mb-6 text-black" /> */}
                    
                     
-                  </form>
-    </div>*/}
+                  {/* </form> */}
+     </div>} 
       <div>
 <BarChart width={450} height={500} data={data}
 margin={{
-  top: 20,
+  top: 10,
   right: 100,
   left: 100,
   bottom: 5
@@ -110,6 +119,7 @@ margin={{
                     Submit
                   </button>
 </div>*/}
+              </div>
               </div>
             </div>
           </div>
