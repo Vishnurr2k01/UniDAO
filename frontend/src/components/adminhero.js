@@ -1,5 +1,5 @@
 import React from 'react';
-
+import dao from '../assets/dao6.jpg'
 import heroVid from '../assets/video.mp4';
 import blc from '../assets/blc.jpg';
 import Navbar from './Navbar';
@@ -12,13 +12,13 @@ const HeroA = () => {
       overflowY: 'scroll',
       overflowX: 'hidden',
     }} className='w-full h-screen top-[90px] flex'>
-      <video
+      {/*<video
         className='object-cover h-full w-full absolute -z-10 blur'
         src={heroVid}
         autoPlay
         loop
         muted
-      />
+  />*/}
       <div>
       <nav className='fixed'>
     <Navbar />
@@ -29,25 +29,29 @@ const HeroA = () => {
           {/*<span className='blue'>Decentralized Decision</span> Making*/}
           
           <h1 className='md:text-6xl sm:text-6xl text-4xl font-bold md:py-0 pl-40 text-white'>
-          UNIDAO
+          
         </h1>
         
         </h1>
         {/*<div className='flex justify-center items-center'>*/}
-        <h1 className='py-0  pl-60'>
-          <p className='md:text-4xl sm:text-6xl text-6l font-semibold md:py-0'>
-            DECENTRALIZATION AND INCLUSION
+        <h1 className='py-10  absolute right-10'>
+          <p className='md:text-6xl sm:text-8xl text-8l font-semibold md:py-0'>
+            DECENTRALIZATION 
+          </p>
+          <p className='md:text-6xl sm:text-8xl text-8l font-semibold md:py-4'>
+             AND INCLUSION
           </p>
           </h1>
           
-        <p className='text-3xl py-11 pl-40 italic animate-pulse delay-500 absolute right text-white'>
+        <p className='text-xl py-60  italic animate-pulse delay-500 absolute right-10 text-white'>
           
            "The power to add proposals and add decision makers vests in you!"
         </p>
-
+   <div className="absolute bottom-20 left-80">
+     <img src={dao} width="300" height="400" fill-black />
       </div>
      
-    </div>
+    </div></div>
     </div>
     </div>
   );
