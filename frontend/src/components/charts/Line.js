@@ -47,7 +47,7 @@ export default class Example extends PureComponent {
     return (
       <div style={{
         zIndex: 0
-      }} className='w-full bg-white p-4 mt-12 rounded-md'>
+      }} className='w-full bg-[#0c1427] p-4 mt-12 rounded-md'>
       
        <LineChart
           width={600}

@@ -6,7 +6,7 @@ const data = [
     { name: 'Number of Admins', value: 20},
     
   ];
-  const COLORS = ['#0088FE', '#00C49F'];
+  const COLORS = ['#0088FE', '#00df9a'];
 export default class Example extends PureComponent {
    
     render() {
