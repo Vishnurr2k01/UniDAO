@@ -1,6 +1,6 @@
 import React, { useEffect,useRef } from 'react';
 import Typed from 'typed.js'
-import {connectWallet} from '../services/Blockchain.services';
+import {connectWallet, createProposal, isAdmin} from '../services/Blockchain.services';
 import { getGlobalState, useGlobalState } from '../store';
 const Hero = () => {
 const el = useRef(null)
@@ -28,11 +28,16 @@ const el = useRef(null)
   useEffect(()=>{
     
   },[connectedAccount])
-  
+  const check = async()=>{
+    const resp = await createProposal("helllo","hello",100)
+    const resp2 = await isAdmin()
+    console.log(resp)
+    console.log(resp2,'resss')
+   }
   return (
     <div className='text-white'>
       <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
-        <p className='text-[#00df9a] font-bold p-2'>
+        <p className='text-[#00df9a] font-bold p-2' onClick={check}>
           GROWING WITH DAO
         </p>
         <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>

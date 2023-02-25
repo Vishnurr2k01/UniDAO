@@ -46,7 +46,7 @@ const HeroA = () => {
   <FaPlus/>
 </div>
 
-<div className='m-12 max-w-[60vw] flex flex-col mx-auto'>
+<div className='m-12 max-w-[70vw] flex flex-col mx-auto'>
   <h2 className='text-white text-center text-3xl font-semibold mb-4 '>Past Proposals</h2>
 <div className='text-white bg-[#0c1427] rounded-md grid grid-cols-6 text-center py-1 text-xl font-semibold '>
         <div className=' col-span-1'> Id </div>
