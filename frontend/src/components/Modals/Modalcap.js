@@ -48,15 +48,23 @@ const Modalcap = ({isVisible , onClose}) => {
                       Power
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-1 mb-3 text-black" />
+                    <div className="flex justify-between mb-3">
+                      <div>
+
+            
                     <label className="block text-white text-xl font-semibold mb-1">
                       Enrol
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-1 mb-3 text-black" />
+                    </div>
+                    <div>
                     <label className="block text-white text-xl font-semibold mb-1">
                       Voter
                     </label>
                     <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-2" />
-                    
+                    </div>
+                    </div>
+
                     
                     
                   </form>
