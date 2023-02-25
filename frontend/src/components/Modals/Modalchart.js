@@ -33,9 +33,9 @@ const Modalchart = ({isVisible , onClose}) => {
         
           <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-[#0c1427] outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-[700px] bg-gray-700 outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-[#096246] rounded-t ">
-                  <h1 className="text-3xl font=bold text-white">Show Chart</h1>
+                  <h1 className="text-3xl font=bold text-gray-300">Proposal</h1>
                   <button
                     className="bg-transparent border-0 text-black float-right"
                      onClick={() => onClose()}
@@ -60,11 +60,11 @@ const Modalchart = ({isVisible , onClose}) => {
                   </form>
     </div>*/}
       <div>
-<BarChart width={300} height={500} data={data}
+<BarChart width={450} height={500} data={data}
 margin={{
   top: 20,
-  right: 50,
-  left: 50,
+  right: 100,
+  left: 100,
   bottom: 5
 }}>
   <CartesianGrid strokeDasharray="3 3"/>
@@ -72,8 +72,8 @@ margin={{
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Acceptees" fill="green" />
-          <Bar dataKey="Rejectees" fill="blue" />
+          <Bar dataKey="Acceptees" fill="#0c1427" />
+          <Bar dataKey="Rejectees" fill="#00df9a" />
   </BarChart>
   </div>
                {/*} <div className="flex items-center justify-end p-6 border-t border-solid border-[#096246] rounded-b">
