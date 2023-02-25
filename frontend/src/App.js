@@ -9,6 +9,7 @@ import User from "./pages/User";
 import Protected from "./services/Protected";
 import Notfound from './pages/Notfound'
 import Chart from "./components/Chart";
+
 function App() {
 
   const [loaded,setLoaded] = useState(false)
@@ -39,7 +40,7 @@ const [connecteAccount] = getGlobalState('connectedAccount')
     <Route path='/user' element={<Protected isRole={isvoter}><User /></Protected>}/>
      <Route path='/wrong' element={<Notfound/>} />
     <Route path='*' element={<div>404</div>} />
-    <Route path='/chart' element={<Chart />} />
+   
 
     </Routes>
     : <div className="flex justify-center items-center h-screen">

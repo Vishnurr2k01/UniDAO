@@ -85,7 +85,7 @@ const Modalchart = ({isVisible , onClose}) => {
                    
                     
                   {/* </form> */}
-     </div>} 
+     </div>
       <div>
 <BarChart width={450} height={500} data={data}
 margin={{
