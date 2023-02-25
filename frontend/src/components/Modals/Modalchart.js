@@ -13,7 +13,25 @@ const data = [
 {name: 'voters', Acceptees: 700, Rejectees: 800},
 
 ];
- 
+
+  
+  {/*const ProposalDetails =() => {
+    const {id} =useParams()
+    const[proposal,setProposal]=useState(null)
+    const [data,setData]=useState([])
+    //const [isStakeholder]=useGlobalState('isStakeholder')
+  
+    const retrieveProposal = async()=> {
+      await getProposal(id).then(res=>{
+        setProposal(res)
+        setData([{
+          name: 'Voters',
+          Acceptees: res?.upvotes,
+          Rejectees: res?.downvotes,
+        }])
+      })
+    }
+  }*/}
 
 const Modalchart = ({isVisible , onClose}) => {
   if (!isVisible) return null ;
