@@ -42,7 +42,7 @@ const HeroA = () => {
           
         <p className='text-3xl py-11 pl-40 italic animate-pulse delay-500 absolute right text-white'>
           
-           "The power to add proposals and add decision makers vests in you!"
+           {/* "The power to add proposals and add decision makers vests in you!" */}
         </p>
 
       </div>

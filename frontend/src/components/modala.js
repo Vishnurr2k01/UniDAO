@@ -1,58 +1,60 @@
 //add proposal modal
-import React, { useState } from "react";
+import React  from "react";
+import useState from "react";
 
-const Modal = () => {
-  const [showModal, setShowModal] = useState(false);
+const Modal = ({isVisible , onClose}) => {
+  if(!isVisible) return null;
+  //  const [showModal, setShowModal] = useState(true);
   return (
     <>
       
-      {showModal ? (
+      {/* {showModal ? ( */}
         <>
         
-          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-[#00df9a] outline-none focus:outline-none">
-                <div className="flex items-start justify-between p-5 border-b border-solid border-[#00df9a] rounded-t ">
-                  <h1 className="text-xl font=bold">Add Proposal</h1>
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-[600px] bg-[#0c1427] outline-none focus:outline-none">
+                <div className="flex items-start justify-between p-5 border-b border-solid border-[#096246] rounded-t ">
+                  <h1 className="text-3xl font=bold text-white">Add Proposal</h1>
                   <button
                     className="bg-transparent border-0 text-black float-right"
-                    onClick={() => setShowModal(false)}
+                    onClick={() =>onClose()}
                   >
                     <span className="text-white opacity-7 h-8 w-6 text-xl block bg-black py-0 rounded-full">
                       x
                     </span>
                   </button>
                 </div>
-                <div className="relative p-6 flex-auto">
-                  <form className="bg-black shadow-md rounded px-8 pt-6 pb-8 w-full">
-                    <label className="block text-white text-sm font-semibold mb-1">
+                <div className="relative p-10 flex-auto">
+                  <form className="bg-black shadow-md rounded px-10 pt-20 pb-8 w-[500px]">
+                    <label className="block text-white text-xl font-semibold mb-2">
                       Title
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                    <label className="block text-white text-sm font-semibold mb-1">
+                    <input className="shadow appearance-none border rounded w-full py-2 px-4 mb-6 text-black" />
+                    <label className="block text-white text-xl font-semibold mb-2">
                       Description
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
-                    <label className="block text-white text-sm font-semibold mb-1">
+                    <input className="shadow appearance-none border rounded w-full py-2 px-4 mb-6 text-black" />
+                    <label className="block text-white text-xl font-semibold mb-2">
                       Duration
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
+                    <input className="shadow appearance-none border rounded w-full py-2 px-4 text-black" />
                     
                     
                   </form>
                 </div>
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className="flex items-center justify-end p-6 border-t border-solid border-[#096246] rounded-b">
                   <button
                     className="text-white bg-black font-bold uppercase px-6 py-3 rounded text-sm outline-none focus:outline-none mr-1 mb-1"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => onClose()}
                   >
                     Close
                   </button>
                   <button
                     className="text-white bg-black active:bg-black font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => onClose()}
                   >
                     Submit
                   </button>
@@ -61,7 +63,7 @@ const Modal = () => {
             </div>
           </div>
         </>
-      ) : null}
+       {/* ) : null} */}
     </>
   );
 };
