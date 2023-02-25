@@ -1,18 +1,17 @@
 import React,{useState,useEffect} from 'react'
 import Navbar from "../components/Navbar"
-import HeroA from '../components/adminhero';
+import HeroA from '../components/Dashboard';
 import {FaDiscord,FaTwitter} from 'react-icons/fa'
 //import Header from '../components/Header'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from '../components/Dashboard';
 function Adminop() {
   return (
-    <div>
-     <div className='flex space-x-9 absolute top-4 right-6'>
-         <FaDiscord size={40} color='#e8f0ec' /> 
-         <FaTwitter size={40} color='#e8f0ec' />  
-       </div>
-     <HeroA/>
-     
+    <div >
+     <div className='absolute z-50 overflow-hidden' >
+   <Navbar/>
+   </div>
+   <Dashboard />
 </div>
     
   );

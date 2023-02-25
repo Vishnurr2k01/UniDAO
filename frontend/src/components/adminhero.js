@@ -45,7 +45,7 @@ const HeroA = () => {
           
         <p className='text-xl py-60  italic animate-pulse delay-500 absolute right-10 text-white'>
           
-           "The power to add proposals and add decision makers vests in you!"
+           {/* "The power to add proposals and add decision makers vests in you!" */}
         </p>
    <div className="absolute bottom-20 left-80">
      <img src={dao} width="300" height="400" fill-black />
