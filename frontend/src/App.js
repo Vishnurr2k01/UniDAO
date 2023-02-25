@@ -15,7 +15,7 @@ function App() {
   const [isadmin] = useGlobalState('isAdmin')
 const [yes,setyes] = useState(false)
 const [connecteAccount] = getGlobalState('connectedAccount')
-  // console.log(isvoter , isadmin ,'thithey')
+  console.log(isvoter , isadmin ,'thithey')
  
 
 
