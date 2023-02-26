@@ -1,9 +1,11 @@
 //add proposal modal
 import React,{useState}  from "react";
+import { createProposal } from "../../services/Blockchain.services";
+import {toast} from 'react-toastify'
 
 
 const Modal = ({isVisible , onClose}) => {
-  // if(!isVisible) return null;
+
 
 
 
@@ -14,14 +16,21 @@ const Modal = ({isVisible , onClose}) => {
   })
 
   const handleChange = (e) => {
-    setData({
-      ...data,
-      [e.target.name]:e.target.value
-    })
+    //convert to number if duration else string and set data in data
+    const {name,value} = e.target
+    setData({...data,[name]:name === 'duration' ? parseInt(value) : value})
   }
-  const SubmitHandler = async()=>
+ 
+  const SubmitHandler = async(e)=>
   {
-console.log(data)
+    e.preventDefault()
+await createProposal(data).then((res)=>res.json()).then((res)=>console.log(res))
+toast.success('Proposal Created')
+setData({
+  title:'',
+  description:'',
+  duration:0
+})
   }
   return (
     <>
@@ -48,14 +57,14 @@ console.log(data)
                     Title
                   </label>
                   <input className="shadow appearance-none border rounded w-full py-2 px-4 mb-6 text-black" name="title" value={data.title} onChange={handleChange}/>
-                  <label className="block text-white text-xl font-semibold mb-2" name="description" onChange={handleChange} value={data.description}>
+                  <label className="block text-white text-xl font-semibold mb-2" >
                     Description
                   </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-4 mb-6 text-black" />
+                  <input className="shadow appearance-none border rounded w-full py-2 px-4 mb-6 text-black" name="description" onChange={handleChange} value={data.description} />
                   <label className="block text-white text-xl font-semibold mb-2">
                     Duration
                   </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-4 text-black" name="duration" value={data.duration}  />
+                  <input className="shadow appearance-none border rounded w-full py-2 px-4 text-black" type="number" name="duration" value={data.duration} onChange={handleChange}  />
                   
                   
                 </form>
@@ -71,7 +80,7 @@ console.log(data)
                 <button
                   className="text-white bg-black active:bg-black font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                   type="button"
-                  onClick={() => onClose()}
+                  onClick={SubmitHandler}
                 >
                   Submit
                 </button>

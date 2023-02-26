@@ -115,7 +115,7 @@ const getProposals = async () => {
 
     const contract = await getEthereumContract();
     const proposals = await contract.methods.getProposals().call();
-    console.log(proposals);
+    console.log(proposals,'ithaan');
     setGlobalState("proposals", structuredProposals(proposals));
     console.log(structuredProposals(proposals));
     console.log(getGlobalState("proposals"));
@@ -141,7 +141,7 @@ const getAdminProposals = async () => {
 const structuredProposals = (proposals) => {
   return proposals
     .map((proposal) => ({
-      id: proposal.id,
+      id: proposal.proposalId,
       title: proposal.title,
       description: proposal.description,
       passed: proposal.passed,
@@ -169,7 +169,7 @@ const getAdminProposal = async (id) => {
 const getProposal = async (id) => {
   try {
     const proposals = getGlobalState("proposals");
-    return proposals.find((proposal) => proposal.id === id);
+    return proposals.find((proposal) => proposal.id == id);
   } catch (error) {
     reportError(error);
   }

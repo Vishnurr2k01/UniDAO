@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProposalListing from '../components/Cards/ProposalListing'
 import PastProposal from '../components/Cards/PastProposal'
 import Header from '../components/Header'
 import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter } from 'react-icons/fa';
-import { getGlobalState } from '../store';
+import { getGlobalState, useGlobalState } from '../store';
 
 function Viewp() {
+  const [data] = useGlobalState('proposals')
+console.log(data)
+  const [proposals,setProposals] = useState(data)
+
   return (
     
     
@@ -19,10 +23,14 @@ function Viewp() {
         <div className=' col-span-1'> Action </div>
         
     </div>
-    <PastProposal/>
-      <PastProposal/>
-      <ProposalListing/>
-      <ProposalListing/>
+    {
+      data?.map((proposal,i)=>{
+        return(
+          <ProposalListing key={i} proposal={proposal}/>
+        )
+      })
+    }
+
     </div>
    </div>
    
