@@ -26,8 +26,8 @@ border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-
         </div>
 
     </div>
-    <Modalvote isVisible={showModalvote} onClose={()=>setShowModalvote(false)} id={proposal?.id}/>
-    <Modalchart isVisible={showModalchart} onClose={()=>setShowModalchart(false)} id={proposal?.id}/>
+    <Modalvote isVisible={showModalvote} onClose={()=>setShowModalvote(false)} id={proposal?.id} type={type}/>
+    <Modalchart isVisible={showModalchart} onClose={()=>setShowModalchart(false)} id={proposal?.id} type={type}/>
     </>
   );
 }

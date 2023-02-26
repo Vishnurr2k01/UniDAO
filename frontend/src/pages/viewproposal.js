@@ -18,7 +18,7 @@ console.log(data1)
      <div>
       <h2 className='text-center text-white font-bold text-3xl my-12'>Proposals List</h2>
       <div className='text-white text-xl text-center flex justify-center gap-6'>
-    <div onClick={()=>setselec(false)} className={`${!selec && 'border-1 border-white text-blue-500'}`}> Normal Proposal </div><div className={`${selec && 'border-1 border-white text-blue-500'}`} onClick={()=>setselec(true)}>Admin Proposal </div>
+    <div onClick={()=>setselec(false)} className={`${!selec && 'border-[1px] border-[#00df9a] text-[#00df9a] p-1 rounded-md'} ${selec&& 'p-1'}`}> Normal Proposal </div><div className={`${selec && 'border-[1px] border-[#00df9a] text-[#00df9a] p-1 rounded-md'} ${!selec&& 'p-1'}`} onClick={()=>setselec(true)}>Admin Proposal </div>
       
     </div>
     <div className="py-10 mx-auto max-w-[80vw] flex flex-col ">

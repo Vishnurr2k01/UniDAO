@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 //import { getProposal, voteOnProposal } from "../services/Blockchain.services";
 import {useParams} from 'react-router-dom'
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-import { getProposal, voteOnProposal } from '../../services/Blockchain.services';
+import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Blockchain.services';
 
 
   
@@ -18,7 +18,8 @@ const [proposal,setProposal] = useState(null)
 const [value,setValue] = useState("upvote")
 
 const retrieveProposal = async() => {
-await getProposal(id).then(res=>{
+if(type==="admin"){
+  await getAdminProposal(id).then(res=>{
     setProposal(res)
     setData([{
       name: 'voters',
@@ -26,6 +27,17 @@ await getProposal(id).then(res=>{
       Rejectees: res?.downvotes
     }])
   })
+}else{
+  await getProposal(id).then(res=>{
+    setProposal(res)
+    setData([{
+      name: 'voters',
+      Acceptees: res?.upvotes,
+      Rejectees: res?.downvotes
+    }])
+  })
+}
+
 }
 useEffect(()=>{
   retrieveProposal()
