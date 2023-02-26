@@ -131,7 +131,7 @@ const getAdminProposals = async () => {
       const proposals = await contract.methods.getAdminProposals().call();
       console.log(proposals);
       setGlobalState("adminProposals", structuredProposals(proposals));
-      console.log(structuredProposals(proposals));
+      console.log(structuredProposals(proposals),'hello');
       console.log(getGlobalState("adminProposals"));
     } catch (error) {
       reportError(error);
@@ -161,7 +161,7 @@ const structuredProposals = (proposals) => {
 const getAdminProposal = async (id) => {
     try {
       const proposals = getGlobalState("adminProposals");
-      return proposals.find((proposal) => proposal.id === id);
+      return proposals.find((proposal) => proposal.id == id);
     } catch (error) {
       reportError(error);
     }
@@ -197,6 +197,19 @@ const isAdmin = async () => {
     console.log(error);
   }
 };
+const voteOnProposal = async (proposalId, supported) => {
+  try {
+    const contract = await getEthereumContract()
+    const account = getGlobalState('connectedAccount')
+    await contract.methods
+      .performVote(proposalId, supported)
+      .send({ from: account })
+
+    window.location.reload()
+  } catch (error) {
+    reportError(error)
+  }
+}
 
 const performAction = async (id) => {
   try {
@@ -221,5 +234,6 @@ export {
   isAdmin,
   getAdminProposal,
   getAdminProposals,
-  performAction
+  performAction,
+  voteOnProposal
 };
