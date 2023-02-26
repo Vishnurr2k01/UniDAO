@@ -2,7 +2,9 @@ import React, { useEffect,useRef } from 'react';
 import Typed from 'typed.js'
 import {connectWallet, createProposal, isAdmin} from '../services/Blockchain.services';
 import { getGlobalState, useGlobalState } from '../store';
+import { useNavigate } from 'react-router-dom';
 const Hero = () => {
+  const navigate = useNavigate()
 const el = useRef(null)
   const [connectedAccount] = useGlobalState('connectedAccount')
   useEffect(() => {
@@ -28,20 +30,14 @@ const el = useRef(null)
   useEffect(()=>{
     
   },[connectedAccount])
-  
 
-  const check = async() => {
-  const res = await isAdmin()
-  console.log(res)
-  
-  }
   return (
     <div className='text-white'>
       <div className='max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center'>
-        <p className='text-[#00df9a] font-bold p-2' onClick={check}>
+        <p className='text-[#00df9a] font-bold p-2' >
           GROWING WITH DAO
         </p>
-        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>
+        <h1 className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6' onClick={()=>navigate('/admin')}>
           Decentralised Decision Making Platform
         </h1>
         <div className='flex justify-center items-center'>

@@ -6,13 +6,13 @@ const data = [
     { name: 'Number of Admins', value: 20},
     
   ];
-  const COLORS = ['#0088FE', '#00C49F'];
+  const COLORS = ['#0088FE', '#00df9a'];
 export default class Example extends PureComponent {
    
     render() {
       return (
        <div className=' w-fit  rounded-md flex flex-col justify-center'> 
-         <PieChart width={300} height={350} onMouseEnter={this.onPieEnter}>
+         <PieChart width={250} height={350} onMouseEnter={this.onPieEnter}>
           <Pie
             data={data}
             cx={120}

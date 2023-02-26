@@ -23,7 +23,7 @@ contract UniDAO is ReentrancyGuard, AccessControl {
     mapping(uint256 => VotedStruct[]) private VotedOn;
     mapping(address => VoterStruct) private enrolled;
 
-    bool inittime = true;
+  
 
     //structs
     struct ProposalStruct {
@@ -60,6 +60,8 @@ contract UniDAO is ReentrancyGuard, AccessControl {
     constructor(address[] memory addr) public {
         for (uint256 i = 0; i < addr.length; i++) {
             adminAddresses.push(addr[i]);
+             _setupRole(ADMIN_ROLE, addr[i]);
+              _setupRole(VOTER_ROLE, addr[i]);
         }
     }
 
@@ -80,30 +82,7 @@ contract UniDAO is ReentrancyGuard, AccessControl {
         );
         _;
     }
-
-    //admin actions
-
-    //                     SET ADMIN ROLE
-
-    //set roles for addressed passed through constructor
-    function setAdminRole() public {
-        if (inittime == true) {
-            for (uint256 i = 0; i < adminAddresses.length; i++) {
-                _setupRole(ADMIN_ROLE, adminAddresses[i]);
-                _setupRole(VOTER_ROLE, adminAddresses[i]);
-            }
-            inittime = false;
-        } else revert("action already performed");
-    }
-
-    //add new admin
-    function setnewAdmin(address addr) public {
-        _setupRole(ADMIN_ROLE, addr);
-        _setupRole(VOTER_ROLE, addr);
-    }
-
-    //proposal and related functions
-
+    
     function createProposal(
         string memory _title,
         string memory _description,
