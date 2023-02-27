@@ -1,12 +1,14 @@
 import React, { useEffect,useRef } from 'react';
 import Typed from 'typed.js'
-import {connectWallet, createProposal, isAdmin} from '../services/Blockchain.services';
+import {connectWallet, createProposal, isAdmin, isVoter} from '../services/Blockchain.services';
 import { getGlobalState, useGlobalState } from '../store';
 import { useNavigate } from 'react-router-dom';
 const Hero = () => {
   const navigate = useNavigate()
 const el = useRef(null)
   const [connectedAccount] = useGlobalState('connectedAccount')
+  const [isAdmin] = useGlobalState('isAdmin')
+  const [isVoter] = useGlobalState('isVoter')
   useEffect(() => {
     
   const typed = new Typed(el.current, {
@@ -27,9 +29,17 @@ const el = useRef(null)
   };
     
   }, [])
-  useEffect(()=>{
+  
+  const startHandler = async () => {
     
-  },[connectedAccount])
+    if(isAdmin){
+      window.location.href = '/admin'
+    }
+    else if(isVoter){
+      window.location.href = '/user'
+    }
+  }
+  
 
   return (
     <div className='text-white'>
@@ -50,7 +60,10 @@ const el = useRef(null)
         </div>
         <p className='md:text-2xl text-xl font-bold text-gray-500'>Make decisions from the bottom-up,governed by a community organized around rules enforced on a blockchain.</p>
         {
-          connectedAccount ? <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black'>{connectedAccount.slice(0,7)}...</button> :
+          connectedAccount ? <div className='flex gap-6 mx-auto'>
+            <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6  py-3 text-black'>{connectedAccount.slice(0,7)}...</button> 
+            <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6  py-3 text-black' onClick={startHandler}>Get Started</button> 
+          </div>:
           <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black' onClick={connectWallet}>Connect Wallet</button>
         }
       </div>

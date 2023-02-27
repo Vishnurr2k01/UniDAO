@@ -9,11 +9,14 @@ function ProposalListing({key,proposal,type}) {
    const [showModalvote,setShowModalvote] = useState(false);
    const [showModalchart,setShowModalchart] = useState(false);
 
-   const resolve = async(id) => {
-        if(!proposal?.action) return
-        await performAction(id)
-        alert("Action Performed")
-        window.location.reload()
+   const resolve = async(id,e) => {
+        if(proposal?.action) return
+        console.log(id)
+        
+        await performAction(id).then(res=>{console.log(res)
+                 alert("Action Performed")}).catch(err=>{console.log(err)})
+       
+     
    }
 
   return (
@@ -28,7 +31,7 @@ function ProposalListing({key,proposal,type}) {
         <button style={ {
 border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalchart(true)}>View Results</button>
  {type=="admin" && !proposal?.action && <button style={ {
-border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={resolve(proposal?.id)}>Perform Action</button> }
+border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>resolve(proposal?.id)}>Perform Action</button> }
         </div>: <button style={ {
 border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalvote(true)}>Vote Now</button> }
         </div>

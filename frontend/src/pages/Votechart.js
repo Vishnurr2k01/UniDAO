@@ -8,7 +8,6 @@ export default function Votechart() {
     const fetchDatas = async () => {
       const res = await fetch("");
       const data = await res.json();
-      console.log(data);
       setdata(data?.data);
     };
     fetchDatas();

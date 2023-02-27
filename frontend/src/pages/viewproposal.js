@@ -10,7 +10,7 @@ import {Link } from "react-router-dom"
 function Viewp() {
   const [data] = useGlobalState('proposals')
   const [data1] = useGlobalState('adminProposals')
-console.log(data1)
+
   const [proposals,setProposals] = useState(data)
   const [selec,setselec] = useState(false)
 

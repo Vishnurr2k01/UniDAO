@@ -19,9 +19,22 @@ function App() {
   const [isadmin] = useGlobalState('isAdmin')
 const [yes,setyes] = useState(false)
 const [connecteAccount] = getGlobalState('connectedAccount')
-  console.log(isvoter , isadmin ,'thithey')
+  // console.log(isvoter , isadmin ,'thithey')
+ 
+useEffect(()=>{
+
+    
+  // setTimeout(()=>{
+  //   if(isadmin){
+  //     window.location.href = '/admin'
+  //   }
+  //   else if(isvoter){
+  //     window.location.href = '/user'
+  //   }
+  // },5000)
  
 
+},[])
 
   useEffect(()=>{
     const fn = async () => {
@@ -30,8 +43,8 @@ const [connecteAccount] = getGlobalState('connectedAccount')
       await isVoter()
       await getProposals()
       await getAdminProposals()
-     const res =  await getProposal('1')
-     console.log(res)
+  
+
       setLoaded(true)
     }
   fn()

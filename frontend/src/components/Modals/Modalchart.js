@@ -40,8 +40,6 @@ if(type==="admin"){
 }
 useEffect(()=>{
   retrieveProposal()
-  console.log(proposal)
-  console.log(data)
 },[id])
 
 

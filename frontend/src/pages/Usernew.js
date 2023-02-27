@@ -9,7 +9,6 @@ import {Link} from "react-router-dom";
 
 function Usernew() {
   const [data] = useGlobalState('proposals')
-  console.log(data)
     const [proposals,setProposals] = useState(data)
    
   
