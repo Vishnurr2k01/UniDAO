@@ -2,11 +2,19 @@ import React from 'react'
 import Modalvote from '../Modals/Modalvote'
 import {useState} from 'react';
 import Modalchart from '../Modals/Modalchart';
+import { performAction } from '../../services/Blockchain.services';
 
 function ProposalListing({key,proposal,type}) {
 
    const [showModalvote,setShowModalvote] = useState(false);
    const [showModalchart,setShowModalchart] = useState(false);
+
+   const resolve = async(id) => {
+        if(!proposal?.action) return
+        await performAction(id)
+        alert("Action Performed")
+        window.location.reload()
+   }
 
   return (
     <>
@@ -22,7 +30,7 @@ border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-
  {type=="admin" && !proposal?.action && <button style={ {
 border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalchart(true)}>Perform Action</button> }
         </div>: <button style={ {
-border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalvote(true)}>Vote Now</button> }
+border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={resolve(proposal?.id)}>Vote Now</button> }
         </div>
 
     </div>
