@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {useState} from 'react';
+import Modal from './Modals/modala';
 import heroVid from '../assets/video.mp4';
 import blc from '../assets/blc.jpg';
 import Navbar from './Navbar';
@@ -9,7 +10,11 @@ import LineBar from './charts/Line';
 import PiechartComp from './charts/PiechartComp';
 import ProposalListing from './Cards/ProposalListing';
 const HeroA = () => {
+  const [showModal,setShowModal] = useState(false);
+
   return (
+    <>
+
     <div style={{
       overflowY: 'scroll',
     }} className="main pl-24 pt-12 min-h-screen overflow-y-scroll">
@@ -42,7 +47,7 @@ const HeroA = () => {
       <PiechartComp/>
       </div>
    </div>
-<div className='fixed bg-[#00df9a] rounded-full p-4 shadow-xl shadow-gray-800 cursor-pointer text-4xl right-12 bottom-12'>
+<div className="fixed bg-[#00df9a] rounded-full p-4 shadow-xl shadow-gray-800 cursor-pointer text-4xl right-12 bottom-12"onClick={()=>setShowModal(true)}>
   <FaPlus/>
 </div>
 
@@ -58,6 +63,8 @@ const HeroA = () => {
   <ProposalListing />
 </div>
     </div>
+    <Modal isVisible={showModal} onClose={()=>setShowModal(false)} />
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ contract UniDAO is ReentrancyGuard, AccessControl {
 
     uint256 public totalProposal;
     uint256 public admProposals;
-    uint32 immutable MIN_VOTE_DURATION = 5 minutes;
+    uint32 immutable MIN_VOTE_DURATION = 180 minutes;
     uint256 immutable ADMIN_POWER = 30;
 
     address[] adminAddresses;
@@ -62,6 +62,11 @@ contract UniDAO is ReentrancyGuard, AccessControl {
             adminAddresses.push(addr[i]);
              _setupRole(ADMIN_ROLE, addr[i]);
               _setupRole(VOTER_ROLE, addr[i]);
+              if (enrolled[addr[i]].power > 0) {
+                            continue;
+                        }
+                        VoterStruct storage voter = enrolled[addr[i]];
+                        voter.power = ADMIN_POWER;
         }
     }
 
@@ -242,7 +247,7 @@ contract UniDAO is ReentrancyGuard, AccessControl {
         ProposalStruct storage proposal = changeAdminProposals[_proposalId];
         if (proposal.action) revert("Action already performed");
         if (proposal.downvotes > proposal.upvotes) revert("Insufficient votes");
-
+        proposal.action = true;
         if (proposal.voter) {
             if (proposal.enrol) {
                 enrollVoters(proposal.change, proposal.power);

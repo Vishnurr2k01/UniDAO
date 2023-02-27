@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Frontpg from "./pages/Frontpg";
 import Adminop from "./pages/Admin";
-import {isWalletConnected,isVoter, createProposal, setAdminRole, isAdmin} from './services/Blockchain.services'
+import {isWalletConnected,isVoter, createProposal, setAdminRole, isAdmin, getProposals, getProposal, getAdminProposals} from './services/Blockchain.services'
 import { useEffect } from "react";
 import { useState } from "react";
 import { useGlobalState,getGlobalState } from "./store";
@@ -9,6 +9,9 @@ import User from "./pages/User";
 import Protected from "./services/Protected";
 import Notfound from './pages/Notfound'
 import Chart from "./components/Chart";
+import Usernew from "./pages/Usernew";
+import Viewp from "./pages/viewproposal";
+
 function App() {
 
   const [loaded,setLoaded] = useState(false)
@@ -25,6 +28,10 @@ const [connecteAccount] = getGlobalState('connectedAccount')
       await isWalletConnected()
       await isAdmin()
       await isVoter()
+      await getProposals()
+      await getAdminProposals()
+     const res =  await getProposal('1')
+     console.log(res)
       setLoaded(true)
     }
   fn()
@@ -36,10 +43,11 @@ const [connecteAccount] = getGlobalState('connectedAccount')
     <Routes>
     <Route exact path='/' element={<Frontpg/>} />
     <Route exact  path='/admin' element={<Protected isRole={isadmin}><Adminop /></Protected>}/>
-    <Route path='/user' element={<Protected isRole={isvoter}><User /></Protected>}/>
+    <Route path='/user' element={<Protected isRole={isvoter}><Usernew /></Protected>}/>
      <Route path='/wrong' element={<Notfound/>} />
     <Route path='*' element={<div>404</div>} />
-    <Route path='/chart' element={<Chart />} />
+    <Route path='/view' element={<Viewp/>}/>
+   
 
     </Routes>
     : <div className="flex justify-center items-center h-screen">
