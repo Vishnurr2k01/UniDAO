@@ -28,9 +28,9 @@ function ProposalListing({key,proposal,type}) {
         <button style={ {
 border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalchart(true)}>View Results</button>
  {type=="admin" && !proposal?.action && <button style={ {
-border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalchart(true)}>Perform Action</button> }
+border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={resolve(proposal?.id)}>Perform Action</button> }
         </div>: <button style={ {
-border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={resolve(proposal?.id)}>Vote Now</button> }
+border:'1px solid #00df9a'}} className='py-1 px-2 font-semibold rounded-md text-[#00df9a] hover:bg-[#00df9a] hover:text-white' onClick={()=>setShowModalvote(true)}>Vote Now</button> }
         </div>
 
     </div>
