@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import ProposalListing from '../components/Cards/ProposalListing'
-import PastProposal from '../components/Cards/PastProposal'
-import Header from '../components/Header'
+//import PastProposal from '../components/Cards/PastProposal'
+//import Header from '../components/Header'
 import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter } from 'react-icons/fa';
 import { getGlobalState, useGlobalState } from '../store';
+import Frontpg from './Frontpg';
+import {Link} from "react-router-dom";
 
 function Usernew() {
   const [data] = useGlobalState('proposals')
@@ -14,6 +16,7 @@ function Usernew() {
   return (
     <div>
     <div>
+    
       <div style={{
       overflowY: 'scroll',
     }} className="main mx-12 pt-12 min-h-screen overflow-y-scroll">

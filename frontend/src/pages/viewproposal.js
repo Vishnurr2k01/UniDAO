@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import ProposalListing from '../components/Cards/ProposalListing'
 import PastProposal from '../components/Cards/PastProposal'
 import Header from '../components/Header'
-import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter, FaArrowLeft } from 'react-icons/fa';
 import { getGlobalState, useGlobalState } from '../store';
+import Adminop from './Admin';
+import {Link } from "react-router-dom"
 
 function Viewp() {
   const [data] = useGlobalState('proposals')
@@ -16,6 +18,9 @@ console.log(data1)
     
     
      <div>
+      <div className="fixed bg-[#00df9a] rounded-full p-4 shadow-xl shadow-gray-800 cursor-pointer text-xl left-6 top-8">
+    <Link to="/admin"><FaArrowLeft></FaArrowLeft></Link>
+      </div>
       <h2 className='text-center text-white font-bold text-3xl my-12'>Proposals List</h2>
       <div className='text-white text-xl text-center flex justify-center gap-6'>
     <div onClick={()=>setselec(false)} className={`${!selec && 'border-[1px] border-[#00df9a] text-[#00df9a] p-1 rounded-md'} ${selec&& 'p-1'}`}> Normal Proposal </div><div className={`${selec && 'border-[1px] border-[#00df9a] text-[#00df9a] p-1 rounded-md'} ${!selec&& 'p-1'}`} onClick={()=>setselec(true)}>Admin Proposal </div>
