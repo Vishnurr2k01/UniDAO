@@ -1,17 +1,14 @@
 import React from 'react'
-import { useState , Fragment} from 'react';
-import { useEffect } from 'react';
+import { useState } from 'react';
 import Modal from './Modals/modala';
 import Modalau from './Modals/Modalau';
 import Modalcap from './Modals/Modalcap';
 import Modalchart from './Modals/Modalchart'
-import {AiFillAccountBook} from 'react-icons/ai'
 import {MdPoll} from 'react-icons/md'
-import {IoPersonAdd} from 'react-icons/io5'
 import {IoIosCreate} from 'react-icons/io'
 import {RiAdminFill} from 'react-icons/ri'
 import { useNavigate } from "react-router-dom";
-import Viewp from '../pages/viewproposal';
+
 import {Link} from "react-router-dom";
 
 export default function Navbar() {
@@ -23,14 +20,6 @@ export default function Navbar() {
 
 
     const[open,setOpen]=useState(false);
-
-  {/*const menu= [
-    { title: 'Add Proposal',icon:<IoIosCreate />},
-    { title: 'View Proposals',icon: <MdPoll/>},
-    { title: 'Add User',icon:<IoPersonAdd/>},
-    { title: 'Create Admin Proposal',icon:<RiAdminFill/>} 
-    
-  ];*/}
 
   return (
     <>
@@ -46,12 +35,7 @@ export default function Navbar() {
           </div>
           
           <ul>
-           {/*} {menu?.map((item,index)=> (
-            <div className=" flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]">
-            <i className="text-3xl" aria-hidden="true">{item.icon}</i>
-              <li className= {`${!open && 'scale-0'} text-white text-lg font-semibold`}>{item.title}</li>
-              </div>
-           ))}*/}
+         
            <div className=" grid grid-cols-1 grid-flow-row gap-4 ">
           <div className="flex  gap-x-7 items-center p-1 my-4 cursor-pointer hover:bg-slate-50/10 rounded-full text-[#00df9a]"> 
           <div><i className="text-3xl" aria-hidden="true">{<IoIosCreate/>}</i></div>

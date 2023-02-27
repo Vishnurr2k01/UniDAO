@@ -1,4 +1,3 @@
-//create admin proposal modal
 
 import React, { useState } from "react";
 import {createAdminProposal} from '../../services/Blockchain.services'
@@ -14,7 +13,7 @@ const [data,setData] = useState({
 
 })
 const changeHadler = (e) => {
-  //if enrol or voter convert to boolean , if address, convert to string array,if power convert to integer array where each element is power of each address
+ 
   const {name,value} = e.target
   setData({...data,[name]:name === 'enrol' || name === 'voter' ? value === 'true' : name === 'addresses' ? value.split(',') : name === 'power' ? value.split(','): value})
 
@@ -23,9 +22,9 @@ const changeHadler = (e) => {
 
 }
 const SubmitHandler=async()=>{
-  //convert power array to integer array
+ 
   data.power = data.power.map((item)=>parseInt(item))
-  //check if all fields are filled , address and power array should be of same length and power array should not contain any negative value and address values must not be duplicate  
+ 
   if(new Set(data.addresses).size !== data.addresses.length)
   {
     alert('Address values must not be duplicate')

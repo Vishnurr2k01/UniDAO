@@ -1,7 +1,7 @@
 import React, { useEffect,useRef } from 'react';
 import Typed from 'typed.js'
-import {connectWallet, createProposal, isAdmin, isVoter} from '../services/Blockchain.services';
-import { getGlobalState, useGlobalState } from '../store';
+import {connectWallet} from '../services/Blockchain.services';
+import { useGlobalState } from '../store';
 import { useNavigate } from 'react-router-dom';
 const Hero = () => {
   const navigate = useNavigate()
@@ -23,7 +23,7 @@ const el = useRef(null)
     
   });
 
-  // Destropying
+
   return () => {
     typed.destroy();
   };

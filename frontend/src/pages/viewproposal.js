@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
 import ProposalListing from '../components/Cards/ProposalListing'
-import PastProposal from '../components/Cards/PastProposal'
-import Header from '../components/Header'
-import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter, FaArrowLeft } from 'react-icons/fa';
-import { getGlobalState, useGlobalState } from '../store';
-import Adminop from './Admin';
+import { FaArrowLeft } from 'react-icons/fa';
+import { useGlobalState } from '../store';
+
 import {Link } from "react-router-dom"
 
 function Viewp() {
   const [data] = useGlobalState('proposals')
   const [data1] = useGlobalState('adminProposals')
-
-  const [proposals,setProposals] = useState(data)
   const [selec,setselec] = useState(false)
 
   return (

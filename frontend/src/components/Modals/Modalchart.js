@@ -1,15 +1,10 @@
-//graph modal
-//import React, { useState } from "react";
+
 import React from 'react';
 import { useEffect, useState } from "react";
-//import { getProposal, voteOnProposal } from "../services/Blockchain.services";
-import {useParams} from 'react-router-dom'
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { getAdminProposal, getProposal } from '../../services/Blockchain.services';
 
 
-
-// Sample data
 
 const Modalchart = ({isVisible , onClose,id , type}) => {
 
@@ -38,6 +33,7 @@ if(type==="admin"){
 
 }
 }
+
 useEffect(()=>{
   retrieveProposal()
 },[id])

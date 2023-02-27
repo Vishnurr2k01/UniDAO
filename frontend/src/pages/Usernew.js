@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ProposalListing from '../components/Cards/ProposalListing'
-//import PastProposal from '../components/Cards/PastProposal'
-//import Header from '../components/Header'
-import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter } from 'react-icons/fa';
+
+import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { getGlobalState, useGlobalState } from '../store';
-import Frontpg from './Frontpg';
-import {Link} from "react-router-dom";
+
 
 function Usernew() {
   const [data] = useGlobalState('proposals')
-    const [proposals,setProposals] = useState(data)
+ 
    
   
   return (

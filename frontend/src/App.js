@@ -1,14 +1,14 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Frontpg from "./pages/Frontpg";
 import Adminop from "./pages/Admin";
-import {isWalletConnected,isVoter, createProposal, setAdminRole, isAdmin, getProposals, getProposal, getAdminProposals} from './services/Blockchain.services'
+import {isWalletConnected,isVoter,  isAdmin, getProposals,getAdminProposals} from './services/Blockchain.services'
 import { useEffect } from "react";
 import { useState } from "react";
 import { useGlobalState,getGlobalState } from "./store";
-import User from "./pages/User";
+
 import Protected from "./services/Protected";
 import Notfound from './pages/Notfound'
-import Chart from "./components/Chart";
+
 import Usernew from "./pages/Usernew";
 import Viewp from "./pages/viewproposal";
 
@@ -17,24 +17,9 @@ function App() {
   const [loaded,setLoaded] = useState(false)
   const [isvoter] = useGlobalState('isVoter')
   const [isadmin] = useGlobalState('isAdmin')
-const [yes,setyes] = useState(false)
+
 const [connecteAccount] = getGlobalState('connectedAccount')
   // console.log(isvoter , isadmin ,'thithey')
- 
-useEffect(()=>{
-
-    
-  // setTimeout(()=>{
-  //   if(isadmin){
-  //     window.location.href = '/admin'
-  //   }
-  //   else if(isvoter){
-  //     window.location.href = '/user'
-  //   }
-  // },5000)
- 
-
-},[])
 
   useEffect(()=>{
     const fn = async () => {

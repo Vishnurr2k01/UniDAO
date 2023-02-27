@@ -1,10 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import Modal from './Modals/modala';
-import heroVid from '../assets/video.mp4';
-import blc from '../assets/blc.jpg';
-import Navbar from './Navbar';
-import { FaDiscord, FaPlus, FaPlusCircle, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaPlus, FaTwitter } from 'react-icons/fa';
 import { getGlobalState } from '../store';
 import LineBar from './charts/Line';
 import PiechartComp from './charts/PiechartComp';
