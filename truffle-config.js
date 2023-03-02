@@ -10,10 +10,13 @@ module.exports = {
       port: 8545,
       network_id: "*"
     },
-    goerli: {
-      provider: () => new HDWalletProvider(MNEMONIC,INFURA_API_KEY),
-      network_id: '5',
-      gas: 4369222
+    liberty: {
+      provider: () => new HDWalletProvider(MNEMONIC,"https://liberty20.shardeum.org/"),
+      network_id: 8081,
+      confirmations: 2,
+      networkCheckTimeout: 100000,
+      timeoutBlocks: 2000,
+      skipDryRun: true
     }
   },
 
