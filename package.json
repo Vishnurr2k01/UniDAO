@@ -4,12 +4,12 @@
     "hardhat": "^2.12.5"
   },
   "dependencies": {
+    "@opengsn/contracts": "^3.0.0-beta.1",
     "@openzeppelin/contracts": "^4.8.0",
     "@truffle/hdwallet-provider": "^2.1.6",
     "dotenv": "^16.0.3",
     "truffle": "^5.7.5",
     "truffle-hdwallet-provider": "^1.0.17",
-    
     "web3": "^1.8.2"
   }
 }

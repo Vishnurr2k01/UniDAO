@@ -1,7 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Blockchain.services';
-
+import Web3 from "web3";
+import { Biconomy } from "@biconomy/mexa";
+import abidata from '../../constants/abidata';
+import { getGlobalState } from '../../store';
 
   
   
@@ -11,6 +14,25 @@ const Modalvote = ({isVisible , onClose,id,type}) => {
 const [proposal,setProposal] = useState(null)
 
 const [value,setValue] = useState("upvote")
+const [metatxn,setMetaTxn] = useState(false)
+const biconomy = new Biconomy(window.ethereum , {
+  apiKey:"yZc4nGIZD.6531f287-b108-49e1-b246-fd7e591c8727" ,
+  debug: true,
+  contractAddresses: ["0x349ff7276a22d79f0b6384265fdad007da539e2a"], // list of contract address you want to enable gasless on
+});
+
+useEffect(()=>{
+  const initBiconomy = async () => {
+    try {
+      await biconomy.init().then((res)=>console.log(res)).catch((err)=>console.log(err));
+      setMetaTxn(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  initBiconomy();
+
+})
 
 const retrieveProposal = async() => {
 if(type==="admin"){
@@ -46,9 +68,32 @@ const SubmitHandler = async() => {
   
   const vote = value === 'upvote' ? 1 : 0
 
- await voteOnProposal(id,vote).then(res=>{
-    console.log(res)
-  })
+//  if(metatxn){
+const web3 = new Web3(biconomy.provider)
+const contractInstance = new web3.eth.Contract(
+  abidata,
+  "0x349ff7276a22d79f0b6384265fdad007da539e2a"
+)
+let txn = await contractInstance.methods.performVote(id,vote).send("eth_sendTransaction",{from:getGlobalState('connectedAccount'),signatureType: "PERSONAL_SIGN"})
+console.log(txn)
+
+
+biconomy.on("txMined", (data) => {
+  console.log(data);
+});
+
+biconomy.on("onError", (data) => {
+  console.log(data);
+});
+
+biconomy.on("txHashChanged", (data) => {
+  console.log(data);
+});
+//  }else{
+//   await voteOnProposal(id,vote).then(res=>{
+//     console.log(res)
+//   })
+//  }
   
 }
   return (

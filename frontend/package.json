@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@biconomy/mexa": "^3.0.5",
     "@biconomy/web3-auth": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/react-router-dom": "^5.3.3",
     "dotenv": "^16.0.3",
-    "https-browserify": "^1.0.0",
+    "fs": "^0.0.1-security",
     "moment": "^2.29.4",
-    "os-browserify": "^0.3.0",
+    "net": "^1.0.2",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-hooks-global-state": "^2.1.0",
     "react-icons": "^4.7.1",
@@ -20,15 +22,14 @@
     "react-scripts": "^5.0.1",
     "react-toastify": "^9.1.1",
     "recharts": "^2.4.3",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
+    "tls": "^0.0.1",
     "typed.js": "^2.0.12",
     "web-vitals": "^2.1.4",
     "web3": "^1.8.2"
   },
   "scripts": {
-    "start": "GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "start": "GENERATE_SOURCEMAP=false react-app-rewired start",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,6 +52,24 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.2.4"
+    "assert": "^2.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "path": "^0.12.7",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.2.4",
+    "url": "^0.11.0"
+  },
+  "browser": {
+    "tls": false,
+    "net": false,
+    "fs": false,
+    "path": false
   }
 }

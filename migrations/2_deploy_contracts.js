@@ -1,4 +1,4 @@
 const UniDAO = artifacts.require("./UniDAO.sol");
 module.exports = function(deployer) {
-  deployer.deploy(UniDAO,["0x30A30B1d364f5a7E7fa1A698e30bE489faDb0d37","0x17a333CDFDa97B3425898259cf235374a4B22711"],{gas:4269222});
+  deployer.deploy(UniDAO,["0xAa33Bb036F221546Ec433A2E5c6cBbDeB4d35B8E","0x17a333CDFDa97B3425898259cf235374a4B22711"],"0xE041608922d06a4F26C0d4c27d8bCD01daf1f792",{gas:4569222});
 }
