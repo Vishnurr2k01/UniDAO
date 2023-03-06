@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar.js"
 
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../components/Dashboard.js';
 function Adminop() {
   return (
     <div  className=' overflow-hidden'>

@@ -1,16 +1,17 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Frontpg from "./pages/Frontpg";
-import Adminop from "./pages/Admin";
-import {isWalletConnected,isVoter,  isAdmin, getProposals,getAdminProposals} from './services/Blockchain.services'
+import Frontpg from "./pages/Frontpg.js";
+import Adminop from "./pages/Admin.js";
+import {isWalletConnected,isVoter,  isAdmin, getProposals,getAdminProposals} from './services/Blockchain.services.js'
 import { useEffect } from "react";
 import { useState } from "react";
-import { useGlobalState,getGlobalState } from "./store";
+import { useGlobalState,getGlobalState } from "./store/index.js";
 
-import Protected from "./services/Protected";
-import Notfound from './pages/Notfound'
+import Protected from "./services/Protected.js";
+import Notfound from './pages/Notfound.js'
 
-import Usernew from "./pages/Usernew";
-import Viewp from "./pages/viewproposal";
+import Usernew from "./pages/Usernew.js";
+import Viewp from "./pages/viewproposal.js";
+import Notifications from "./pages/Notifications.js";
 
 function App() {
 
@@ -45,6 +46,7 @@ const [connecteAccount] = getGlobalState('connectedAccount')
      <Route path='/wrong' element={<Notfound/>} />
     <Route path='*' element={<div>404</div>} />
     <Route path='/view' element={<Viewp/>}/>
+     <Route path='/notifications' element={<Notifications/>}/>
    
 
     </Routes>

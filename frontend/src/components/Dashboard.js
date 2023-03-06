@@ -1,11 +1,11 @@
 import React from 'react';
 import {useState} from 'react';
-import Modal from './Modals/modala';
-import { FaDiscord, FaPlus, FaTwitter } from 'react-icons/fa';
-import { getGlobalState } from '../store';
-import LineBar from './charts/Line';
-import PiechartComp from './charts/PiechartComp';
-import ProposalListing from './Cards/ProposalListing';
+import Modal from './Modals/modala.js';
+import { FaDiscord, FaPlus, FaTwitter } from 'react-icons/fa/index.esm.js';
+import { getGlobalState } from '../store/index.js';
+import LineBar from './charts/Line.js';
+import PiechartComp from './charts/PiechartComp.js';
+import ProposalListing from './Cards/ProposalListing.js';
 const HeroA = () => {
   const [showModal,setShowModal] = useState(false);
 

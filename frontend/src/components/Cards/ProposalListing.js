@@ -1,8 +1,8 @@
 import React from 'react'
-import Modalvote from '../Modals/Modalvote'
+import Modalvote from '../Modals/Modalvote.js'
 import {useState} from 'react';
-import Modalchart from '../Modals/Modalchart';
-import { performAction } from '../../services/Blockchain.services';
+import Modalchart from '../Modals/Modalchart.js';
+import { performAction } from '../../services/Blockchain.services.js';
 
 function ProposalListing({key,proposal,type}) {
 

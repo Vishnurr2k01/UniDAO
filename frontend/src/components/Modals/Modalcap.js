@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import {createAdminProposal} from '../../services/Blockchain.services'
+import {createAdminProposal} from '../../services/Blockchain.services.js'
 
 const Modalcap = ({isVisible , onClose}) => {
 

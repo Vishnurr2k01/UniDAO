@@ -1,6 +1,6 @@
 //add proposal modal
 import React,{useState}  from "react";
-import { createProposal } from "../../services/Blockchain.services";
+import { createProposal } from "../../services/Blockchain.services.js";
 import {toast} from 'react-toastify'
 
 

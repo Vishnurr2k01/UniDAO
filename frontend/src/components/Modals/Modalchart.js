@@ -2,7 +2,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
-import { getAdminProposal, getProposal } from '../../services/Blockchain.services';
+import { getAdminProposal, getProposal } from '../../services/Blockchain.services.js';
 
 
 

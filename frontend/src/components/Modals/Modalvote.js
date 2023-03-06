@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Blockchain.services';
+import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Blockchain.services.js';
 import Web3 from "web3";
 import { Biconomy } from "@biconomy/mexa";
-import abidata from '../../constants/abidata';
-import { getGlobalState } from '../../store';
+import abidata from '../../constants/abidata.js';
+import { getGlobalState } from '../../store/index.js';
 
   
   

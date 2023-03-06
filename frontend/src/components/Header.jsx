@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaDiscord,FaTwitter} from 'react-icons/fa'
+import {FaDiscord,FaTwitter} from 'react-icons/fa/index.esm.js'
 
 const Header = () => {
   return (

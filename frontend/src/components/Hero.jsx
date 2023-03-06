@@ -1,7 +1,7 @@
 import React, { useEffect,useRef } from 'react';
 import Typed from 'typed.js'
-import {connectWallet} from '../services/Blockchain.services';
-import { useGlobalState } from '../store';
+import {connectWallet} from '../services/Blockchain.services.js';
+import { useGlobalState } from '../store/index.js';
 import { useNavigate } from 'react-router-dom';
 const Hero = () => {
   const navigate = useNavigate()

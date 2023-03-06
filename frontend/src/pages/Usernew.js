@@ -1,8 +1,8 @@
 import React from 'react'
-import ProposalListing from '../components/Cards/ProposalListing'
+import ProposalListing from '../components/Cards/ProposalListing.js'
 
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { getGlobalState, useGlobalState } from '../store';
+import { FaDiscord, FaTwitter } from 'react-icons/fa/index.esm.js';
+import { getGlobalState, useGlobalState } from '../store/index.js';
 
 
 function Usernew() {

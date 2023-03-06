@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
-import Modal from './Modals/modala';
-import Modalau from './Modals/Modalau';
-import Modalcap from './Modals/Modalcap';
-import Modalchart from './Modals/Modalchart'
-import {MdPoll} from 'react-icons/md'
-import {IoIosCreate} from 'react-icons/io'
-import {RiAdminFill} from 'react-icons/ri'
+import Modal from './Modals/modala.js';
+import Modalau from './Modals/Modalau.js';
+import Modalcap from './Modals/Modalcap.js';
+import Modalchart from './Modals/Modalchart.js'
+import {MdPoll} from 'react-icons/md/index.esm.js'
+import {IoIosCreate} from 'react-icons/io/index.esm.js'
+import {RiAdminFill} from 'react-icons/ri/index.esm.js'
 import { useNavigate } from "react-router-dom";
 
 import {Link} from "react-router-dom";

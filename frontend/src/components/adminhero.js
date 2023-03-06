@@ -1,7 +1,7 @@
 import React from 'react';
 import dao from '../assets/dao6.jpg'
 import heroVid from '../assets/video.mp4';
-import Navbar from './Navbar';
+import Navbar from './Navbar.js';
 const HeroA = () => {
   return (
     <div className="main">

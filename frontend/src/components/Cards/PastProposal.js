@@ -1,5 +1,5 @@
 import React from 'react'
-import Modalchart from '../Modals/Modalchart'
+import Modalchart from '../Modals/Modalchart.js'
 import {useState} from 'react'
 
 function PastProposal() {

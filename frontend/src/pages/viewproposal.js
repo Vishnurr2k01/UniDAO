@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import ProposalListing from '../components/Cards/ProposalListing'
-import { FaArrowLeft } from 'react-icons/fa';
-import { useGlobalState } from '../store';
+import ProposalListing from '../components/Cards/ProposalListing.js'
+import { FaArrowLeft } from 'react-icons/fa/index.esm.js';
+import { useGlobalState } from '../store/index.js';
 
 import {Link } from "react-router-dom"
 
