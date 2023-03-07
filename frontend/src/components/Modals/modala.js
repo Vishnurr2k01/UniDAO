@@ -4,10 +4,11 @@ import { createProposal } from "../../services/Blockchain.services.js";
 import {toast} from 'react-toastify'
 import { ethers } from "ethers";
 import * as PushAPI from "@pushprotocol/restapi";
-import * as dotenv from 'dotenv'
-dotenv.config()
+// import * as dotenv from 'dotenv'
+// dotenv.config()
 
-  const PK = process.env.P_KEY; // channel private key
+  const PK = process.env.REACT_APP_P_KEY; // channel private key
+
 const Pkey = `0x${PK}`;
 const _signer = new ethers.Wallet(Pkey);
 
