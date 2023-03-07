@@ -2,7 +2,14 @@
 import React,{useState}  from "react";
 import { createProposal } from "../../services/Blockchain.services.js";
 import {toast} from 'react-toastify'
+import { ethers } from "ethers";
+import * as PushAPI from "@pushprotocol/restapi";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
+  const PK = process.env.P_KEY; // channel private key
+const Pkey = `0x${PK}`;
+const _signer = new ethers.Wallet(Pkey);
 
 const Modal = ({isVisible , onClose}) => {
 
@@ -15,6 +22,32 @@ const Modal = ({isVisible , onClose}) => {
     duration:0
   })
 
+  const sendNotification = async() => {
+    try {
+      const apiResponse = await PushAPI.payloads.sendNotification({
+        signer: _signer,
+        type: 1, // broadcast
+        identityType: 2, // direct payload
+        notification: {
+          title: `New proposal initiated with title ${data.title}`,
+          body: `Description: ${data.description} Duration: ${data.duration}`
+        },
+        payload: {
+          title: `New proposal initiated with title ${data.title}`,
+          body: `Description: ${data.description} Duration: ${data.duration}`,
+          cta: '',
+          img: ''
+        },
+        channel: 'eip155:5:0xfe6d77EBCb772b65a812436421C0e341cFF72855', // your channel address
+        env: 'staging'
+      });
+      console.log(apiResponse)
+    } catch (err) {
+      console.error('Error: ', err);
+    }
+  }
+
+
   const handleChange = (e) => {
     //convert to number if duration else string and set data in data
     const {name,value} = e.target
@@ -26,6 +59,10 @@ const Modal = ({isVisible , onClose}) => {
     e.preventDefault()
 await createProposal(data).then((res)=>res.json()).then((res)=>console.log(res))
 toast.success('Proposal Created')
+
+await sendNotification()
+
+
 setData({
   title:'',
   description:'',

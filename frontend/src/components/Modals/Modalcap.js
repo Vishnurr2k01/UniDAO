@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import {createAdminProposal} from '../../services/Blockchain.services.js'
 
+
 const Modalcap = ({isVisible , onClose}) => {
+
 
 const [data,setData] = useState({
   title:'',
@@ -37,6 +39,8 @@ const SubmitHandler=async()=>{
     return
   }
   await createAdminProposal(data)
+
+ 
 }
   return (
     <>
