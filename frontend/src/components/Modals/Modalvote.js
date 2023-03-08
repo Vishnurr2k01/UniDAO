@@ -9,11 +9,11 @@ import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Bl
 const Modalvote = ({isVisible , onClose,id,type}) => {
   const [data,setData] = useState([])
 const [proposal,setProposal] = useState(null)
-
+console.log(type)
 const [value,setValue] = useState("upvote")
 
 const retrieveProposal = async() => {
-if(type==="admin"){
+if(type=="admin"){
   await getAdminProposal(id).then(res=>{
     setProposal(res)
     setData([{

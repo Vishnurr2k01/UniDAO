@@ -35,7 +35,7 @@ console.log(data1,'ith')
       {
       data1?.filter((prop)=>prop.proposer!=="0x0000000000000000000000000000000000000000").map((proposal,i)=>{
         return(
-          <ProposalListing key={i} proposal={proposal} type="admin"/>
+          <ProposalListing key={i} proposal={proposal} type={"admin"}/>
         )
       }
       )
@@ -44,7 +44,7 @@ console.log(data1,'ith')
      {
       data?.map((proposal,i)=>{
         return(
-          <ProposalListing key={i} proposal={proposal}/>
+          <ProposalListing key={i} proposal={proposal} />
         )
       })
     }
