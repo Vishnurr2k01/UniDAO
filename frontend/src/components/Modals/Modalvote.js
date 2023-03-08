@@ -69,30 +69,30 @@ const SubmitHandler = async() => {
   const vote = value === 'upvote' ? 1 : 0
 
 //  if(metatxn){
-const web3 = new Web3(biconomy.provider)
-const contractInstance = new web3.eth.Contract(
-  abi.abi,
-  "0xd398B1444be93c98b74105ddD310ca724434E589"
-)
-let txn = await contractInstance.methods.performVote(id,vote).send("eth_sendTransaction",{from:getGlobalState('connectedAccount'),signatureType: "PERSONAL_SIGN"})
-console.log(txn)
+// const web3 = new Web3(biconomy.provider)
+// const contractInstance = new web3.eth.Contract(
+//   abi.abi,
+//   "0xd398B1444be93c98b74105ddD310ca724434E589"
+// )
+// let txn = await contractInstance.methods.performVote(id,vote).send("eth_sendTransaction",{from:getGlobalState('connectedAccount'),signatureType: "PERSONAL_SIGN"})
+// console.log(txn)
 
 
-biconomy.on("txMined", (data) => {
-  console.log(data);
-});
+// biconomy.on("txMined", (data) => {
+//   console.log(data);
+// });
 
-biconomy.on("onError", (data) => {
-  console.log(data);
-});
+// biconomy.on("onError", (data) => {
+//   console.log(data);
+// });
 
-biconomy.on("txHashChanged", (data) => {
-  console.log(data);
-});
+// biconomy.on("txHashChanged", (data) => {
+//   console.log(data);
+// });
 //  }else{
-//   await voteOnProposal(id,vote).then(res=>{
-//     console.log(res)
-//   })
+  await voteOnProposal(id,vote).then(res=>{
+    console.log(res)
+  })
 //  }
   
 }
