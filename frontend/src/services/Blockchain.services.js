@@ -1,5 +1,5 @@
 import Web3 from "web3";
-// import abi from "../constants/abi.json";
+import abi from "../constants/abi.json";
 import abidata from '../constants/abidata.js'
 import {
   setGlobalState,
@@ -51,18 +51,19 @@ const getEthereumContract = async () => {
   const connectedAccount = getGlobalState("connectedAccount");
   if (connectedAccount) {
     const networkId = await window.web3.eth.net.getId();
-    // const networlData = abi.networks[networkId];
-    // if (networlData) {
-//       const contract = new window.web3.eth.Contract(
-//         abi.abi,
-// networlData.address      );
+    // const contract = new window.web3.eth.Contract(
+    //   abidata,
+    //   "0x349ff7276a22d79f0b6384265fdad007da539e2a"
+    // );
+    // 
+    const networlData = abi.networks[networkId];
+    if (networlData) {
       const contract = new window.web3.eth.Contract(
-        abidata,
-        "0x349ff7276a22d79f0b6384265fdad007da539e2a"
-      );
-      setGlobalState("contract", contract);
-      return contract;
-    // } else return null;
+        abi.abi,
+networlData.address      );
+setGlobalState("contract", contract);
+return contract;
+    } else return null;
   } else {
     return getGlobalState("connectedAccount");
   }

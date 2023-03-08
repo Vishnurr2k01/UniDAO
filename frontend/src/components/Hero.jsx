@@ -1,14 +1,21 @@
-import React, { useEffect,useRef } from 'react';
+import React, { useEffect,useRef, useState } from 'react';
 import Typed from 'typed.js'
 import {connectWallet} from '../services/Blockchain.services.js';
-import { useGlobalState } from '../store/index.js';
+import { getGlobalState, setGlobalState, useGlobalState } from '../store/index.js';
 import { useNavigate } from 'react-router-dom';
+import SocialLogin from "@biconomy/web3-auth";
+import "@biconomy/web3-auth/dist/src/style.css"
+import { ethers } from 'ethers';
 const Hero = () => {
   const navigate = useNavigate()
 const el = useRef(null)
   const [connectedAccount] = useGlobalState('connectedAccount')
   const [isAdmin] = useGlobalState('isAdmin')
   const [isVoter] = useGlobalState('isVoter')
+  const [socialAcc,setSocialAcc] = useState(false)
+  const [socialaddress,setSocailAddress] = useState('')
+
+  const socialLogin = new SocialLogin()
   useEffect(() => {
     
   const typed = new Typed(el.current, {
@@ -27,9 +34,36 @@ const el = useRef(null)
   return () => {
     typed.destroy();
   };
-    
+ 
   }, [])
-  
+useEffect(()=>{
+  const initialize = async () => {
+    await socialLogin.init()
+   }
+   initialize()
+      
+})
+  const Social = async ()=>{
+   await socialLogin.showWallet()
+    if (!socialLogin?.provider) return;
+    const provider = new ethers.providers.Web3Provider(socialLogin.provider)
+    const accouts = await provider.listAccounts()
+    console.log("EOA ADDRESS",accouts)
+   setSocailAddress(accouts)
+     setSocialAcc(true)
+    setGlobalState('connectedAccount',accouts)
+   
+  }
+
+
+  const Logout = async()=>{
+    await socialLogin.logout()
+    setGlobalState('connectedAccount',null)
+  }
+  // useEffect(()=>{
+  //   getInfo()
+  // },[socialAcc])
+
   const startHandler = async () => {
     
     if(isAdmin){
@@ -64,7 +98,12 @@ const el = useRef(null)
             <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6  py-3 text-black'>{connectedAccount.slice(0,7)}...</button> 
             <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6  py-3 text-black' onClick={startHandler}>Get Started</button> 
           </div>:
+          <>
           <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black' onClick={connectWallet}>Connect Wallet</button>
+          <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black' onClick={Social}>Login with social account</button>
+          <button className='bg-[#00df9a] w-[200px] rounded-md font-bold my-6 mx-auto py-3 text-black' onClick={Logout}>{socialAcc?<>Logout {socialaddress}</> : <>logout {socialaddress}</>}</button>
+          
+          </>
         }
       </div>
     </div>

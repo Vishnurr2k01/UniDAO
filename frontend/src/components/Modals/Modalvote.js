@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Blockchain.services.js';
 import Web3 from "web3";
 import { Biconomy } from "@biconomy/mexa";
-import abidata from '../../constants/abidata.js';
+import abi from '../../constants/abi.json'
 import { getGlobalState } from '../../store/index.js';
 
   
@@ -16,9 +16,9 @@ const [proposal,setProposal] = useState(null)
 const [value,setValue] = useState("upvote")
 const [metatxn,setMetaTxn] = useState(false)
 const biconomy = new Biconomy(window.ethereum , {
-  apiKey:"yZc4nGIZD.6531f287-b108-49e1-b246-fd7e591c8727" ,
+  apiKey:"5_S8qebbz.4348aa49-ac64-41ff-bdf0-a4b9ae13ca82" ,
   debug: true,
-  contractAddresses: ["0x349ff7276a22d79f0b6384265fdad007da539e2a"], // list of contract address you want to enable gasless on
+  contractAddresses: ["0xd398B1444be93c98b74105ddD310ca724434E589"], // list of contract address you want to enable gasless on
 });
 
 useEffect(()=>{
@@ -71,8 +71,8 @@ const SubmitHandler = async() => {
 //  if(metatxn){
 const web3 = new Web3(biconomy.provider)
 const contractInstance = new web3.eth.Contract(
-  abidata,
-  "0x349ff7276a22d79f0b6384265fdad007da539e2a"
+  abi.abi,
+  "0xd398B1444be93c98b74105ddD310ca724434E589"
 )
 let txn = await contractInstance.methods.performVote(id,vote).send("eth_sendTransaction",{from:getGlobalState('connectedAccount'),signatureType: "PERSONAL_SIGN"})
 console.log(txn)
