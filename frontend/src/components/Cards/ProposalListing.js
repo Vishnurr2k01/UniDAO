@@ -8,7 +8,7 @@ function ProposalListing({key,proposal,type}) {
 
    const [showModalvote,setShowModalvote] = useState(false);
    const [showModalchart,setShowModalchart] = useState(false);
-   console.log(type,"ith2")
+   
 
    const resolve = async(id,e) => {
         if(proposal?.action) return

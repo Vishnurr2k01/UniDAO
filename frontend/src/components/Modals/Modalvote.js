@@ -3,13 +3,10 @@ import { useEffect, useState } from "react";
 import { getAdminProposal, getProposal, voteOnProposal } from '../../services/Blockchain.services';
 
 
-  
-  
-
 const Modalvote = ({isVisible , onClose,id,type}) => {
   const [data,setData] = useState([])
 const [proposal,setProposal] = useState(null)
-console.log(type)
+
 const [value,setValue] = useState("upvote")
 
 const retrieveProposal = async() => {
