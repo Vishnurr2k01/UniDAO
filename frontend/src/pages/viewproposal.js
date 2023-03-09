@@ -1,14 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProposalListing from '../components/Cards/ProposalListing'
 import { FaArrowLeft } from 'react-icons/fa';
 import { useGlobalState } from '../store';
 
 import {Link } from "react-router-dom"
+import { getAdminProposal, getAdminProposals, getProposals } from '../services/Blockchain.services';
 
 function Viewp() {
   const [data] = useGlobalState('proposals')
   const [data1] = useGlobalState('adminProposals')
   const [selec,setselec] = useState(false)
+  useEffect(() => {
+    const fn=async()=>{
+      await getProposals()
+      await getAdminProposals()
+    }
+  }, [selec])
+  
 console.log(data1,'ith')
   return (
     

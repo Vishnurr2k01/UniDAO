@@ -62,14 +62,14 @@ useEffect(()=>{
              
               
                   
-                  <div className="p-10 block text-white text-4xl font-bold pl-20 mb-10 absolute right-20">
+                  <div className="p-10 block text-white text-4xl font-bold pl-32 mb-10 absolute right-20">
                    {proposal?.title}
                     </div>
                   
             
                 
-                  <div className="flex-auto relative ">
-                  <p className="flex-auto overflow-y-auto relative p-40 text-white text-lg font-semibold mt-20 pt-20 text-center ">
+                  <div className="flex-auto relative max-w-[40ch]">
+                  <p className="overflow-y-auto relative  pl-40 text-white text-lg font-semibold mt-20 pt-20 ">
                  {proposal?.description}
                   </p>
                   </div>

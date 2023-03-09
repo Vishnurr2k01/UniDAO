@@ -10,6 +10,7 @@ const [proposal,setProposal] = useState(null)
 const [value,setValue] = useState("upvote")
 
 const retrieveProposal = async() => {
+  console.log(type)
 if(type=="admin"){
   await getAdminProposal(id).then(res=>{
     setProposal(res)
@@ -19,6 +20,8 @@ if(type=="admin"){
       Rejectees: res?.downvotes
     }])
   })
+  // console.log('hello')
+
 }else{
   await getProposal(id).then(res=>{
     setProposal(res)
@@ -33,7 +36,7 @@ if(type=="admin"){
 }
 useEffect(()=>{
   retrieveProposal()
-},[id])
+},[id,type])
   
 const changeHandler = (e) => {
   setValue(e.target.value)
