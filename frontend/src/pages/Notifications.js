@@ -49,15 +49,18 @@ function Notifications() {
           Opt in
         </div>
       ) : null}
+      <div className="flex gap-6 flex-wrap">
+
       {notification
         .filter((item) => item.app === "uniDAO")
         .map((item) => {
           return (
-            <div className="flex gap-4">
+            <div className="flex flex-row gap-4">
               <NotificationCard data={item} />
             </div>
           );
         })}
+        </div>
     </div>
   );
 }
